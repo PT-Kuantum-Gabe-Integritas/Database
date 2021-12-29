@@ -1,11 +1,17 @@
 ﻿Imports Database
 Imports System.IO
+Imports System.Data.SQLite
+Imports System.Data.OleDb
+
 
 Public Class Database
     Implements IDatabase
 
     Public _isConnected
     Public _path
+    Private _connectionString As String
+    Private _con
+    Private _cmd
 
     Public Property BasePath As String Implements IDatabase.BasePath
         Get
@@ -15,6 +21,27 @@ Public Class Database
             _path = value
         End Set
     End Property
+
+    'Public Enum CONTYPE
+    '    SQL
+    '    ACCESS
+    'End Enum
+    'Public Enum DATATYPE
+    '    USER
+    '    CONFIG
+    'End Enum
+
+    Private Function GetFolderBase(type As IDatabase.DATATYPE) As String
+        Select Case type
+            Case IDatabase.DATATYPE.CONFIG
+                Return "Config"
+            Case IDatabase.DATATYPE.USER
+                Return "User"
+            Case Else
+                Return "None"
+        End Select
+    End Function
+
 
     Public ReadOnly Property isConnected As String Implements IDatabase.isConnected
         Get
@@ -64,4 +91,59 @@ Public Class Database
     Public Function GetDate(_date As Date) As String Implements IDatabase.GetDate
         Return String.Format("{0:0000}-{1:00}-{2:00}", _date.Year, _date.Month, _date.Day)
     End Function
+
+
+    Public Function Open(FileName As String, Type As IDatabase.DATATYPE, connection_type As IDatabase.CONTYPE) As Boolean Implements IDatabase.Open
+        _isConnected = False
+        Dim folderPath As String = Path.Combine(_path, GetFolderBase(Type))
+        FolderExist(folderPath)
+
+        If connection_type = IDatabase.CONTYPE.SQL Then
+            Try
+                _connectionString = "Data Source =" & IO.Path.Combine(folderPath, FileName + ".db") & ";Version=3;"
+                _con = New SQLiteConnection(_connectionString)
+                _cmd = New SQLiteCommand()
+                _con.ParseViaFramework = True
+                _con.Open()
+                _isConnected = True
+            Catch ex As Exception
+                _isConnected = False
+            End Try
+
+        Else
+            Try
+                _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, FileName + ".accdb") & ";"
+                _con = New OleDbConnection(_connectionString)
+                _cmd = New OleDbCommand()
+                _con.ParseViaFramework = True
+                _con.Open()
+                _isConnected = True
+            Catch ex As Exception
+                _isConnected = False
+            End Try
+        End If
+
+        Return _isConnected
+    End Function
+
+    Public Sub Close() Implements IDatabase.Close
+        Try
+            If _isConnected Then
+                _cmd.Dispose()
+                _con.Close()
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub ExecNonQuery(cmd As String)
+        If _isConnected Then
+            _cmd = _con.CreateCommand()
+            _cmd.CommandText = cmd
+            _cmd.ExecuteNonQuery()
+
+        End If
+    End Sub
 End Class

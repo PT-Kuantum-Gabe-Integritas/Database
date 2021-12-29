@@ -7,5 +7,16 @@
     Sub FolderExist(path As String)
     ReadOnly Property isConnected As String
     Property BasePath As String
+    Enum DATATYPE
+        CONFIG
+        USER
+    End Enum
+    Enum CONTYPE
+        SQL
+        ACCESS
+    End Enum
+
+    Function Open(FileName As String, Type As DATATYPE, connection_type As CONTYPE) As Boolean
+    Sub Close()
 
 End Interface

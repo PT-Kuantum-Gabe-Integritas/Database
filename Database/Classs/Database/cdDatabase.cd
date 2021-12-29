@@ -3,7 +3,7 @@
   <Class Name="Database.Database">
     <Position X="5.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAECAAAAAEAAQAgAAAAEAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>BQAAAAAAAAECIAAAAEAAQRhAAAAEAAAIAAAAIACAAEA=</HashCode>
       <FileName>Classs\Database\Database.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -13,22 +13,27 @@
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
-    <NestedTypes>
-      <Enum Name="Database.SQLite.DBTYPE" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Classs\Database\SQLite.vb</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIIAAAAAAARBAAAAAAAAIAAAAACCAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Classs\Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Database.IDatabase">
     <Position X="3.75" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Database.IDatabase.DATATYPE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classs\Database\IDatabase.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Database.IDatabase.CONTYPE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classs\Database\IDatabase.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAEAAAAAAAAAQAgAAAAEAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>BQAAAAAAAAEAIAAAAAAAQAgAAAAEAAAAAAAAIACAAAA=</HashCode>
       <FileName>Classs\Database\IDatabase.vb</FileName>
     </TypeIdentifier>
   </Interface>
