@@ -8,10 +8,12 @@ Public Class Database
     Implements IDatabase
 
     Public _isConnected
-    Public _path
+    Public _path = Application.StartupPath
     Private _connectionString As String
     Private _con
     Private _cmd
+
+    Private _conType As Boolean
 
     Public Property BasePath As String Implements IDatabase.BasePath
         Get
@@ -22,14 +24,9 @@ Public Class Database
         End Set
     End Property
 
-    'Public Enum CONTYPE
-    '    SQL
-    '    ACCESS
-    'End Enum
-    'Public Enum DATATYPE
-    '    USER
-    '    CONFIG
-    'End Enum
+    'Public Sub New(Path As String)
+    '    _path = Path
+    'End Sub
 
     Private Function GetFolderBase(type As IDatabase.DATATYPE) As String
         Select Case type
@@ -50,24 +47,25 @@ Public Class Database
         End Get
     End Property
 
-    Public Function DBInsert(param As String, table As String, values As String) As String Implements IDatabase.DBInsert
+    Public Function DBInsert(table As String, param As String, values As String) Implements IDatabase.DBInsert
         Dim query As String = ""
         If _isConnected Then
             query = String.Format("INSERT INTO {0} {1} VALUES {2}", table, param, values)
         End If
-        Return query
+        ExecNonQuery(query)
+        'Return query
     End Function
 
-    Public Function DBUpdate(param As String, table As String, where As String) As String Implements IDatabase.DBUpdate
+    Public Function DBUpdate(table As String, param As String, where As String) Implements IDatabase.DBUpdate
         Dim query As String = ""
         If _isConnected Then
             query = String.Format("UPDATE {0} SET {1} WHERE {2}", table, param, where)
         End If
-        Return query
+        ExecNonQuery(query)
     End Function
 
 
-    Public Sub FolderExist(path As String) Implements IDatabase.FolderExist
+    Private Sub FolderExist(path As String) Implements IDatabase.FolderExist
         If Not Directory.Exists(path) Then
             Directory.CreateDirectory(path)
         End If
@@ -106,6 +104,7 @@ Public Class Database
                 _con.ParseViaFramework = True
                 _con.Open()
                 _isConnected = True
+                _conType = 0
             Catch ex As Exception
                 _isConnected = False
             End Try
@@ -118,6 +117,7 @@ Public Class Database
                 _con.ParseViaFramework = True
                 _con.Open()
                 _isConnected = True
+                _conType = 1
             Catch ex As Exception
                 _isConnected = False
             End Try
@@ -138,7 +138,7 @@ Public Class Database
         End Try
     End Sub
 
-    Public Sub ExecNonQuery(cmd As String)
+    Public Sub ExecNonQuery(cmd As String) Implements IDatabase.ExecNonQuery
         If _isConnected Then
             _cmd = _con.CreateCommand()
             _cmd.CommandText = cmd
@@ -146,4 +146,28 @@ Public Class Database
 
         End If
     End Sub
+    Public Function ExecQuery(cmd As String) As DataTable Implements IDatabase.ExecQuery
+        Dim dt As DataTable = New DataTable()
+
+        If _conType = 0 Then
+            Dim _dr As SQLiteDataReader
+            If _isConnected Then
+                _cmd = _con.CreateCommand()
+                _cmd.CommandText = cmd
+                _dr = _cmd.ExecuteReader()
+                dt.Load(_dr)
+
+            End If
+        Else
+            Dim _dr As OleDbDataReader
+            If _isConnected Then
+                _cmd = _con.CreateCommand()
+                _cmd.CommandText = cmd
+                _dr = _cmd.ExecuteReader()
+                dt.Load(_dr)
+            End If
+        End If
+
+        Return dt
+    End Function
 End Class

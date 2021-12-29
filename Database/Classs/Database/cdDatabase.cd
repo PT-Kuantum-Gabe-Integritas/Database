@@ -3,7 +3,7 @@
   <Class Name="Database.Database">
     <Position X="5.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAECIAAAAEAAQRhAAAAEAAAIAAAAIACAAEA=</HashCode>
+      <HashCode>BQAAAAAAAAECIAAAAEIAQRhAAAAEAAAIAAAAIBCAAEA=</HashCode>
       <FileName>Classs\Database\Database.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -14,7 +14,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAIAAAAAAAAAAAAQAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Classs\Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,7 +33,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAEAIAAAAAAAQAgAAAAEAAAAAAAAIACAAAA=</HashCode>
+      <HashCode>BQAAAAAAAAEAIAAAAAAAQQgAAAAEAAAAAAAAIBCAAAA=</HashCode>
       <FileName>Classs\Database\IDatabase.vb</FileName>
     </TypeIdentifier>
   </Interface>
