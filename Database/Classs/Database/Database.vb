@@ -47,23 +47,30 @@ Public Class Database
         End Get
     End Property
 
-    Public Function DBInsert(table As String, param As String, values As String) Implements IDatabase.DBInsert
+    Public Sub DBInsert(table As String, param As String, values As String) Implements IDatabase.DBInsert
         Dim query As String = ""
         If _isConnected Then
             query = String.Format("INSERT INTO {0} {1} VALUES {2}", table, param, values)
         End If
         ExecNonQuery(query)
         'Return query
-    End Function
+    End Sub
 
-    Public Function DBUpdate(table As String, param As String, where As String) Implements IDatabase.DBUpdate
+    Public Sub DBUpdate(table As String, param As String, where As String) Implements IDatabase.DBUpdate
         Dim query As String = ""
         If _isConnected Then
             query = String.Format("UPDATE {0} SET {1} WHERE {2}", table, param, where)
         End If
         ExecNonQuery(query)
-    End Function
+    End Sub
 
+    Public Sub DBDelete(table As String, where As String) Implements IDatabase.DBDelete
+        Dim query As String = ""
+        If _isConnected Then
+            query = String.Format("DELETE FROM {0} WHER {1}", table, where)
+        End If
+        ExecNonQuery(query)
+    End Sub
 
     Private Sub FolderExist(path As String) Implements IDatabase.FolderExist
         If Not Directory.Exists(path) Then
@@ -71,8 +78,9 @@ Public Class Database
         End If
     End Sub
 
-    Public Function DBSelect(param As String, table As String, where As String) As String Implements IDatabase.DBSelect
+    Public Function DBSelect(param As String, table As String, where As String) As DataTable Implements IDatabase.DBSelect
         Dim query As String = ""
+        Dim dt As DataTable
         If _isConnected Then
             If where = String.Empty Then
                 query = String.Format("SELECT {0} FROM {1}",
@@ -83,8 +91,10 @@ Public Class Database
 
             End If
         End If
-        Return query
+        dt = ExecQuery(query)
+        Return dt
     End Function
+
 
     Public Function GetDate(_date As Date) As String Implements IDatabase.GetDate
         Return String.Format("{0:0000}-{1:00}-{2:00}", _date.Year, _date.Month, _date.Day)

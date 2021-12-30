@@ -8,6 +8,6 @@ Public Class Form1
     End Sub
 
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
-        _testSQ.AddProduction("123123321", "TESTPRODUCTXV", 200, 30)
+        _testSQ.AddProduction("123123321", "TESTPRODUCTXV", 200, 30, "Hermina")
     End Sub
 End Class
