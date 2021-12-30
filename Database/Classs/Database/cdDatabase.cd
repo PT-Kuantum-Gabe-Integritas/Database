@@ -10,7 +10,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAECIAAAAEIAQRhAAAAEAAAIAAAAIBCAQEA=</HashCode>
+      <HashCode>BQAAAAAAAAECIAAAAEIAQRhAAAAEABAIAAAAIBCAQEA=</HashCode>
       <FileName>Classs\Database\Database.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -26,9 +26,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Access">
-    <Position X="8.5" Y="4.5" Width="1.5" />
+    <Position X="8.25" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAgAAAAAgAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
       <FileName>Classs\Database\Access.vb</FileName>
     </TypeIdentifier>
   </Class>
