@@ -14,12 +14,12 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAgAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAIAAAAIAAAAAAAAQAAQAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Classs\Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Access">
-    <Position X="8.5" Y="3" Width="1.5" />
+    <Position X="8.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAgAAAAAgAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classs\Database\Access.vb</FileName>

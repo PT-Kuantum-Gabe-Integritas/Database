@@ -30,9 +30,9 @@ Public Class Access
 
     Private Sub RemoveValue(Item As String, Val As String)
         Try
-            Dim str_param As String = String.Format("Value='{0}'", Val)
+            'Dim str_param As String = String.Format("Value='{0}'", Val)
             Dim str_where As String = String.Format("Item='{0}'", Item)
-            DBDelete("ProductData", str_param, str_where)
+            DBDelete("ProductData", str_where)
         Catch ex As Exception
 
         End Try

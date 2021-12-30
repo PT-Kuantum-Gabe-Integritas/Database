@@ -19,7 +19,7 @@
         ACCESS
     End Enum
 
-    Function Open(FileName As String, Type As DATATYPE, connection_type As CONTYPE) As Boolean
+    Function Open(FileName As String, Type As DATATYPE) As Boolean
     Sub Close()
 
 End Interface

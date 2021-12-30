@@ -9,11 +9,14 @@ Public Class Database
 
     Public _isConnected
     Public _path = Application.StartupPath
-    Private _connectionString As String
-    Private _con
-    Private _cmd
+    Public _connectionString As String
+    Public _con
+    Public _cmd
 
-    Private _conType As Boolean
+    Public Data
+
+
+    Public _conType As Boolean
 
     Public Property BasePath As String Implements IDatabase.BasePath
         Get
@@ -28,7 +31,7 @@ Public Class Database
     '    _path = Path
     'End Sub
 
-    Private Function GetFolderBase(type As IDatabase.DATATYPE) As String
+    Public Function GetFolderBase(type As IDatabase.DATATYPE) As String
         Select Case type
             Case IDatabase.DATATYPE.CONFIG
                 Return "Config"
@@ -101,82 +104,28 @@ Public Class Database
     End Function
 
 
-    Public Function Open(FileName As String, Type As IDatabase.DATATYPE, connection_type As IDatabase.CONTYPE) As Boolean Implements IDatabase.Open
-        _isConnected = False
-        Dim folderPath As String = Path.Combine(_path, GetFolderBase(Type))
-        FolderExist(folderPath)
-
-        If connection_type = IDatabase.CONTYPE.SQL Then
-            Try
-                _connectionString = "Data Source =" & IO.Path.Combine(folderPath, FileName + ".db") & ";Version=3;"
-                _con = New SQLiteConnection(_connectionString)
-                _cmd = New SQLiteCommand()
-                _con.ParseViaFramework = True
-                _con.Open()
-                _isConnected = True
-                _conType = 0
-            Catch ex As Exception
-                _isConnected = False
-            End Try
-
-        Else
-            Try
-                _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, FileName + ".accdb") & ";"
-                _con = New OleDbConnection(_connectionString)
-                _cmd = New OleDbCommand()
-                _con.ParseViaFramework = True
-                _con.Open()
-                _isConnected = True
-                _conType = 1
-            Catch ex As Exception
-                _isConnected = False
-            End Try
-        End If
+    Public Overridable Function Open(FileName As String, Type As IDatabase.DATATYPE) As Boolean Implements IDatabase.Open
 
         Return _isConnected
     End Function
 
-    Public Sub Close() Implements IDatabase.Close
-        Try
-            If _isConnected Then
-                _cmd.Dispose()
-                _con.Close()
+    Public Overridable Sub Close() Implements IDatabase.Close
+        'Try
+        '    If _isConnected Then
+        '        _cmd.Dispose()
+        '        _con.Close()
 
-            End If
-        Catch ex As Exception
+        '    End If
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
 
-    Public Sub ExecNonQuery(cmd As String) Implements IDatabase.ExecNonQuery
-        If _isConnected Then
-            _cmd = _con.CreateCommand()
-            _cmd.CommandText = cmd
-            _cmd.ExecuteNonQuery()
+    Public Overridable Sub ExecNonQuery(cmd As String) Implements IDatabase.ExecNonQuery
 
-        End If
     End Sub
-    Public Function ExecQuery(cmd As String) As DataTable Implements IDatabase.ExecQuery
+    Public Overridable Function ExecQuery(cmd As String) As DataTable Implements IDatabase.ExecQuery
         Dim dt As DataTable = New DataTable()
-
-        If _conType = 0 Then
-            Dim _dr As SQLiteDataReader
-            If _isConnected Then
-                _cmd = _con.CreateCommand()
-                _cmd.CommandText = cmd
-                _dr = _cmd.ExecuteReader()
-                dt.Load(_dr)
-
-            End If
-        Else
-            Dim _dr As OleDbDataReader
-            If _isConnected Then
-                _cmd = _con.CreateCommand()
-                _cmd.CommandText = cmd
-                _dr = _cmd.ExecuteReader()
-                dt.Load(_dr)
-            End If
-        End If
 
         Return dt
     End Function
