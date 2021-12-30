@@ -8,7 +8,7 @@ Public Class SQLite
     Public Sub AddProduction(PO_NUMBER As String, REFERENCE As String, QTY_PO As String, QTY_GROUP As String, USER As String)
 
         Dim str_param As String = "('po_number','reference','qty_po','qty_group','user')"
-        Dim str_val As String = String.Format("('{0}','{1}','{2}','{3}',{4})", PO_NUMBER, REFERENCE, QTY_PO, QTY_GROUP, USER)
+        Dim str_val As String = String.Format("('{0}','{1}','{2}','{3}','{4}')", PO_NUMBER, REFERENCE, QTY_PO, QTY_GROUP, USER)
         DBInsert("PRODUCT", str_param, str_val)
 
     End Sub
