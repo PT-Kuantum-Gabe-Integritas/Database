@@ -8,6 +8,8 @@ Public Class Access
         Dim str_val As String = String.Format("('{0}','{1}','{2}','{3}',{4},{5},{6})", ART_NUMBER, REFERENCE, QTY_IND, QTY_GROUP, BITMAP, LOGOFFER, INFORMATIONPIC)
         DBInsert("ProducData", str_param, str_val)
 
+
+
     End Sub
 
     Public Sub UpdateProduct(ART_NUMBER As String, REFERENCE As String, QTY_IND As String, QTY_GROUP As String, BITMAP As String, LOGOFFER As String, INFORMATIONPIC As String)
