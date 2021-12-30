@@ -10,16 +10,16 @@
     Property BasePath As String
     Function ExecQuery(cmd As String) As DataTable
     Sub ExecNonQuery(cmd As String)
-    Enum DATATYPE
-        CONFIG
-        USER
-    End Enum
+    'Enum DATATYPE
+    '    CONFIG
+    '    USER
+    'End Enum
     Enum CONTYPE
         SQL
         ACCESS
     End Enum
 
-    Function Open(FileName As String, Type As DATATYPE) As Boolean
+    Function Open() As Boolean
     Sub Close()
 
 End Interface

@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 Public Class Form1
-    Private _testSQ As SQLite = New SQLite()
+    Private _testSQ As SQLite = New SQLite("PRODUCT", Database.DATATYPE.CONFIG)
 
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
-        '_testSQ.Open("Product", IDatabase.DATATYPE.CONFIG)
+        _testSQ.Open()
 
     End Sub
 

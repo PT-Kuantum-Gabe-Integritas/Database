@@ -12,11 +12,13 @@ Public Class Database
     Public _connectionString As String
     Public _con
     Public _cmd
-
     Public Data
-
-
     Public _conType As Boolean
+
+    Enum DATATYPE
+        CONFIG
+        USER
+    End Enum
 
     Public Property BasePath As String Implements IDatabase.BasePath
         Get
@@ -31,11 +33,11 @@ Public Class Database
     '    _path = Path
     'End Sub
 
-    Public Function GetFolderBase(type As IDatabase.DATATYPE) As String
+    Public Function GetFolderBase(type As DATATYPE) As String
         Select Case type
-            Case IDatabase.DATATYPE.CONFIG
+            Case DATATYPE.CONFIG
                 Return "Config"
-            Case IDatabase.DATATYPE.USER
+            Case DATATYPE.USER
                 Return "User"
             Case Else
                 Return "None"
@@ -104,7 +106,7 @@ Public Class Database
     End Function
 
 
-    Public Overridable Function Open(FileName As String, Type As IDatabase.DATATYPE) As Boolean Implements IDatabase.Open
+    Public Overridable Function Open() As Boolean Implements IDatabase.Open
 
         Return _isConnected
     End Function

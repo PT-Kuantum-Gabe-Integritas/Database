@@ -4,30 +4,25 @@ Imports Database
 
 Public Class SQLite
     Inherits Database
-
+    Private _fileName
+    Private _dataType
     Sub New()
         MyBase.New()
 
     End Sub
 
-    Sub New(Data_Type As IDatabase.DATATYPE)
+    Sub New(FileName As String, DataType As DATATYPE)
 
-    End Sub
-
-    Sub New(b As String)
-        If File.Exists(b) Then
+        If FileName = String.Empty Then
             Return
         End If
 
-        If b = String.Empty Then
-            Return
-        End If
-
-
-
-
+        _fileName = FileName
+        _dataType = DataType
 
     End Sub
+
+
 
     'Public Sub AddProduction(PO_NUMBER As String, REFERENCE As String, QTY_PO As String, QTY_GROUP As String, USER As String)
 
@@ -37,17 +32,17 @@ Public Class SQLite
 
     'End Sub
 
-    'Public Sub SetQty(VAL As Integer, PO_NO As String)
-    '    Dim str_val As String = String.Format("qty_ind = {0}", VAL)
-    '    Dim str_no As String = String.Format("po_no = {0}", PO_NO)
-    '    DBUpdate("PRODUCT", str_val, PO_NO)
-    'End Sub
+    ''Public Sub SetQty(VAL As Integer, PO_NO As String)
+    ''    Dim str_val As String = String.Format("qty_ind = {0}", VAL)
+    ''    Dim str_no As String = String.Format("po_no = {0}", PO_NO)
+    ''    DBUpdate("PRODUCT", str_val, PO_NO)
+    ''End Sub
 
-    'Public Sub SetStatus(VAL As Integer, PO_NO As String)
-    '    Dim str_val As String = String.Format("status = {0}", VAL)
-    '    Dim str_no As String = String.Format("po_no = {0}", PO_NO)
-    '    DBUpdate("PRODUCT", str_val, PO_NO)
-    'End Sub
+    ''Public Sub SetStatus(VAL As Integer, PO_NO As String)
+    ''    Dim str_val As String = String.Format("status = {0}", VAL)
+    ''    Dim str_no As String = String.Format("po_no = {0}", PO_NO)
+    ''    DBUpdate("PRODUCT", str_val, PO_NO)
+    ''End Sub
 
     Public Overrides Function ExecQuery(cmd As String) As DataTable
         Dim dt As DataTable = New DataTable()
@@ -74,10 +69,10 @@ Public Class SQLite
     End Sub
 
 
-    Public Overrides Function Open(FileName As String, Type As IDatabase.DATATYPE) As Boolean
-        Dim folderPath As String = Path.Combine(_path, GetFolderBase(Type))
+    Public Overrides Function Open() As Boolean
+        Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
-            _connectionString = "Data Source =" & IO.Path.Combine(folderPath, FileName + ".db") & ";Version=3;"
+            _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName + ".db") & ";Version=3;"
             _con = New SQLiteConnection(_connectionString)
             _cmd = New SQLiteCommand()
             _con.ParseViaFramework = True
@@ -87,7 +82,7 @@ Public Class SQLite
         Catch ex As Exception
             _isConnected = False
         End Try
-        Return MyBase.Open(FileName, Type)
+        Return MyBase.Open()
     End Function
 
     Public Overrides Sub Close()
