@@ -4,25 +4,16 @@
     Public Property DBTYPE As String
     Public Property CONTYPE As String
 
-    Public Sub New()
-
-    End Sub
-
     Public Sub New(ByVal _conString As String,
-                   ByVal _dbType As String,
-                   ByVal _conType As String
+                   ByVal _dbType As String
                   )
         ConnectionString = _conString
         DBTYPE = _dbType
-        CONTYPE = _conType
+
     End Sub
 
+    Public Sub New()
 
-    Function GetConnection() As IEnumerable(Of DBManager)
-        Return New List(Of DBManager) From
-            {
-            New DBManager("Product", "Config", "SQL")
-            }
-    End Function
+    End Sub
 
 End Class

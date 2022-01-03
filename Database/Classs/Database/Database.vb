@@ -83,7 +83,7 @@ Public Class Database
         End If
     End Sub
 
-    Public Function DBSelect(param As String, table As String, where As String) As DataTable Implements IDatabase.DBSelect
+    Public Function DBSelect(param As String, table As String, where As String, sortbyASC As Boolean, limit As Integer) As DataTable Implements IDatabase.DBSelect
         Dim query As String = ""
         Dim dt As DataTable
         If _isConnected Then
@@ -123,10 +123,10 @@ Public Class Database
         'End Try
     End Sub
 
-    Public Overridable Sub ExecNonQuery(cmd As String) Implements IDatabase.ExecNonQuery
+    Public Overridable Sub ExecNonQuery(cmd As String)
 
     End Sub
-    Public Overridable Function ExecQuery(cmd As String) As DataTable Implements IDatabase.ExecQuery
+    Public Overridable Function ExecQuery(cmd As String) As DataTable
         Dim dt As DataTable = New DataTable()
 
         Return dt

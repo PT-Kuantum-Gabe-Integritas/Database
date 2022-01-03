@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports Database.DBManager
 Public Class Form1
     'Private _testSQ As SQLite = New SQLite("PRODUCT", Database.DATATYPE.CONFIG)
     'Private _testSQ = SQLite : getInstance
@@ -6,7 +7,6 @@ Public Class Form1
     'Dim _testSQ2 As SQLite = SQLite.Instance()
 
     'Dim list As New List(SQLite)
-
 
 
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
