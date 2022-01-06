@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports System.Data.SQLite
+Imports System.Threading
+Imports Database.DBManager
 Imports Database
 
 Public Class SQLite
@@ -19,7 +21,7 @@ Public Class SQLite
 
         _fileName = FileName
         _dataType = DataType
-
+        _fn = FileName
     End Sub
 
 
@@ -71,7 +73,7 @@ Public Class SQLite
     End Sub
 
 
-    Public Overrides Function Open() As Boolean
+    Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
             _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName + ".db") & ";Version=3;"
@@ -84,8 +86,7 @@ Public Class SQLite
         Catch ex As Exception
             _isConnected = False
         End Try
-        Return MyBase.Open()
-    End Function
+    End Sub
 
     Public Overrides Sub Close()
         Try

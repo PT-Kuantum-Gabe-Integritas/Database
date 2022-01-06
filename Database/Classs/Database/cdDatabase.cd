@@ -2,6 +2,9 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Database.Database">
     <Position X="5.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Enum Name="Database.Database.DATATYPE" Collapsed="true">
         <TypeIdentifier>
@@ -10,39 +13,51 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAECIAAAAEIAQRhAAAAEABAIAAAAIBCAQEA=</HashCode>
+      <HashCode>BQCAAAAAAAECYAAAAEIAQRhAAAAEABAIAAAAIBCAUEA=</HashCode>
       <FileName>Classs\Database\Database.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Database.SQLite">
-    <Position X="8" Y="1" Width="2" />
+    <Position X="7.5" Y="0.75" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAoIAAAAAAIAQAAAAAAQQAAAAAAAAAAAAAABCAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
       <FileName>Classs\Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Access">
-    <Position X="8" Y="5.5" Width="2" />
+    <Position X="7.5" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
       <FileName>Classs\Database\Access.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DBManager">
-    <Position X="1.75" Y="0.75" Width="1.5" />
+    <Position X="2" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Database.DBManager.type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classs\Database\DBManager.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="Database.DBManager.asddd" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classs\Database\DBManager.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAACBAAAAAAAA=</HashCode>
+      <HashCode>AAIgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAGBAAABAAAA=</HashCode>
       <FileName>Classs\Database\DBManager.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Database.IDatabase">
-    <Position X="3.5" Y="0.75" Width="1.5" />
+    <Position X="3.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BQAAAAAAAAEAIAAAAAAAQAgAAAAEAAAAAAAAIACAQAA=</HashCode>
+      <HashCode>BQAAAAAAAAEAYAAAAAAAQAgAAAAEAAAAAAAAIACAUAA=</HashCode>
       <FileName>Classs\Database\IDatabase.vb</FileName>
     </TypeIdentifier>
   </Interface>

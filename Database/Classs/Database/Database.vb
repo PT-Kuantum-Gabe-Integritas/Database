@@ -1,4 +1,5 @@
 ﻿Imports Database
+Imports System.Threading
 Imports System.IO
 Imports System.Data.SQLite
 Imports System.Data.OleDb
@@ -14,6 +15,18 @@ Public Class Database
     Public _cmd
     Public Data
     Public _conType As Boolean
+    Public _fn
+
+    Public Property Filename As String Implements IDatabase.Filename
+        Get
+            Return _fn
+        End Get
+        Set(value As String)
+            value = _fn
+        End Set
+    End Property
+    Public Property UID As Integer Implements IDatabase.UID
+
 
     Enum DATATYPE
         CONFIG
@@ -106,10 +119,10 @@ Public Class Database
     End Function
 
 
-    Public Overridable Function Open() As Boolean Implements IDatabase.Open
+    Public Overridable Sub Open() Implements IDatabase.Open
 
-        Return _isConnected
-    End Function
+        'Return _isConnected
+    End Sub
 
     Public Overridable Sub Close() Implements IDatabase.Close
         'Try

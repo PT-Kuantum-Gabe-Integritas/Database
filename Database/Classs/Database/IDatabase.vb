@@ -8,8 +8,8 @@
     Sub FolderExist(path As String)
     ReadOnly Property isConnected As String
     Property BasePath As String
-
-    Function Open() As Boolean
+    Property Filename As String
+    Sub Open()
     Sub Close()
-
+    Property UID As Integer
 End Interface

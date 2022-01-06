@@ -53,7 +53,7 @@ Public Class Access
     '    End Try
     'End Sub
 
-    Public Overrides Function Open() As Boolean
+    Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
             _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, _fileName + ".accdb") & ";"
@@ -65,8 +65,7 @@ Public Class Access
         Catch ex As Exception
             _isConnected = False
         End Try
-        Return MyBase.Open()
-    End Function
+    End Sub
 
     Public Overrides Sub Close()
         Try
