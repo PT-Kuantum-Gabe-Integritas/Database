@@ -2,16 +2,14 @@
 Imports Database.SQLite
 
 Public Class DBManager
+    Implements IDBManager
 
     Public DBList As List(Of IDatabase) = New List(Of IDatabase)()
-    Public Property ConnectionString As String
+    Private dbL
+    Private dbTypeee
     Public Property DBTYPE As String
-    Public Property CONTYPE As String
     Public Property FILENAME As String
-    Public Enum type
-        SQL
-        Access
-    End Enum
+
     Public Sub New(ByVal _filename As String,
                    ByVal _dbType As Database.DATATYPE)
         FILENAME = _filename
@@ -23,21 +21,9 @@ Public Class DBManager
 
     End Sub
 
-    Public Structure asddd
-        Public asd As Integer
-
-        Public a As Integer
-        Public Function add() As Integer
-            Return a + asd
-        End Function
-        Public Sub Reset()
-            asd = 0
-            a = 0
-        End Sub
-    End Structure
-
-    Public Function GetDataBase(filename As String, uid As String, type As String) As IDatabase
-        Dim dba As IDatabase = New SQLite()
+    Public Function GetDataBase(filename As String, uid As String, type As String) As IDatabase Implements IDBManager.GetDataBase
+        'Dim dbL As IDatabase = New Database()
+        'Dim Tipe = type
         Dim result = (From db In DBList Where db.UID = uid).ToArray()
         If result.Count > 0 Then
             Return result.ElementAt(0)
@@ -45,24 +31,58 @@ Public Class DBManager
             Add(filename, type, uid)
         End If
 
-        Return dba
+        'Select Case Tipe
+        '    Case "-sqlite"
+        '        Return dbTypeee = New SQLite()
+        '    Case "-access"
+        '        Return dbTypeee = New Access()
+        'End Select
+
+        Return dbL
     End Function
 
-    Private Sub Add(filename As String, type As String, uid As String)
-        Dim a As IDatabase = New Database()
+    'Private Sub Add(filename As String, type As String, uid As String) Implements IDBManager.Add
+    '    Dim a As IDatabase = New Database()
+    '    Select Case type
+    '        Case "-sqlite"
+    '            a = New SQLite(filename, Database.DATATYPE.USER)
+    '            a.Filename = filename
+    '            a.UID = uid
+    '            a.Open()
+
+    '        Case "-access"
+    '            a = New Access()
+    '            a.Filename = filename
+    '            a.UID = uid
+    '        Case Else
+    '            a = New Database()
+    '    End Select
+    '    a.Open()
+    '    DBList.Add(a)
+    'End Sub
+
+    Private Sub Add(filename As String, type As String, uid As String) Implements IDBManager.Add
+        Dim a As SQLite = New SQLite()
+        Dim b As Access = New Access()
         Select Case type
             Case "-sqlite"
-                a = New SQLite()
+
                 a.Filename = filename
+                a = New SQLite(filename, Database.DATATYPE.USER)
+                a.UID = uid
+                a.Open()
 
             Case "-access"
-
+                b = New Access(filename, Database.DATATYPE.USER)
+                b.Filename = filename
+                b.UID = uid
+                b.Open()
             Case Else
                 a = New Database()
         End Select
-        a.Open()
 
         DBList.Add(a)
+        Dim abc = 50
     End Sub
 
 End Class

@@ -19,17 +19,17 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Database.SQLite">
-    <Position X="7.5" Y="0.75" Width="2" />
+    <Position X="7.25" Y="0.75" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAQAAABCAAAA=</HashCode>
       <FileName>Classs\Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Access">
-    <Position X="7.5" Y="3.5" Width="2" />
+    <Position X="7.25" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
       <FileName>Classs\Database\Access.vb</FileName>
@@ -37,28 +37,24 @@
   </Class>
   <Class Name="Database.DBManager">
     <Position X="2" Y="0.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Database.DBManager.type" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Classs\Database\DBManager.vb</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Struct Name="Database.DBManager.asddd" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Classs\Database\DBManager.vb</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAIgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAGBAAABAAAA=</HashCode>
+      <HashCode>AAIgAAAAAAAQAAAAAAAAAAAAEAAAAAAAAEAAAABAAAA=</HashCode>
       <FileName>Classs\Database\DBManager.vb</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Database.IDatabase">
     <Position X="3.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BQAAAAAAAAEAYAAAAAAAQAgAAAAEAAAAAAAAIACAUAA=</HashCode>
       <FileName>Classs\Database\IDatabase.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Database.IDBManager">
+    <Position X="2" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>IDBManager.vb</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
