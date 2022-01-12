@@ -26,7 +26,7 @@ Public Class Databasemain
             value = _fn
         End Set
     End Property
-    Public Property UID As Integer Implements IDatabase.UID
+    Public Property UID As String Implements IDatabase.UID
 
 
     Enum DATATYPE
@@ -47,15 +47,8 @@ Public Class Databasemain
     '    _path = Path
     'End Sub
 
-    Public Function GetFolderBase(type As DATATYPE) As String
-        Select Case type
-            Case DATATYPE.CONFIG
-                Return "Config"
-            Case DATATYPE.USER
-                Return "User"
-            Case Else
-                Return "None"
-        End Select
+    Public Function GetFolderBase(type As String) As String
+        Return type
     End Function
 
 
@@ -72,7 +65,6 @@ Public Class Databasemain
             query = String.Format("INSERT INTO {0} {1} VALUES {2}", table, param, values)
         End If
         ExecNonQuery(query)
-        'Return query
     End Sub
 
     Public Sub DBUpdate(table As String, param As String, where As String) Implements IDatabase.DBUpdate
@@ -113,8 +105,14 @@ Public Class Databasemain
         dt = ExecQuery(query)
         Return dt
     End Function
-
-
+    Public Function DBLoad(table As String, ByVal tbl As DataTable, ByVal cn As SQLiteConnection)
+        Dim query As String = ""
+        query = String.Format("SELECT * FROM {0}", table)
+        Dim SQLiteDA As New SQLiteDataAdapter(query, cn)
+        SQLiteDA.Fill(tbl)
+        SQLiteDA.Dispose()
+        SQLiteDA = Nothing
+    End Function
     Public Function GetDate(_date As Date) As String Implements IDatabase.GetDate
         Return String.Format("{0:0000}-{1:00}-{2:00}", _date.Year, _date.Month, _date.Day)
     End Function
@@ -122,19 +120,10 @@ Public Class Databasemain
 
     Public Overridable Sub Open() Implements IDatabase.Open
 
-        'Return _isConnected
     End Sub
 
     Public Overridable Sub Close() Implements IDatabase.Close
-        'Try
-        '    If _isConnected Then
-        '        _cmd.Dispose()
-        '        _con.Close()
 
-        '    End If
-        'Catch ex As Exception
-
-        'End Try
     End Sub
 
     Public Overridable Sub ExecNonQuery(cmd As String)

@@ -11,7 +11,7 @@ Public Class SQLite
 
     End Sub
 
-    Sub New(FileName As String, DataType As DATATYPE)
+    Sub New(FileName As String, DataType As String)
 
         If FileName = String.Empty Then
             Return

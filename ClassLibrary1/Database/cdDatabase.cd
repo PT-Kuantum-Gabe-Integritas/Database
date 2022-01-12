@@ -7,8 +7,8 @@
       <FileName>Database\SQLite.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Database.DBManager" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.5" Y="1" Width="1.5" />
+  <Class Name="Database.DBManager" BaseTypeListCollapsed="true">
+    <Position X="6" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIgAAAAAAAQAAAAAAAAAAAAEAAAAAAAAEAAAABAAAA=</HashCode>
       <FileName>Database\DBManager.vb</FileName>
@@ -37,15 +37,15 @@
       <FileName>Database\Access.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="Database.IDBManager" Collapsed="true">
-    <Position X="10.25" Y="2.25" Width="1.5" />
+  <Interface Name="Database.IDBManager">
+    <Position X="9.75" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Database\IDBManager.vb</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Database.IDatabase" Collapsed="true">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+  <Interface Name="Database.IDatabase">
+    <Position X="8" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BQAAAAAAAAEAYAAAAAAAQAgAAAAEAAAAAAAAIACAUAA=</HashCode>
       <FileName>Database\IDatabase.vb</FileName>

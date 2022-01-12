@@ -1,6 +1,4 @@
-﻿Imports System.IO
-Imports System.Threading
-Imports Database
+﻿Imports Database
 Public Class Form1
     Private _testSQ As IDBManager = New DBManager()
     Private a As SQLite = New SQLite()
