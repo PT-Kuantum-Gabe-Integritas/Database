@@ -1,8 +1,9 @@
-﻿'Imports Database
+﻿Imports Database
 Imports System.Threading
 Imports System.IO
 Imports System.Data.SQLite
 Imports System.Data.OleDb
+Imports System.Windows.Forms
 
 
 Public Class Database
