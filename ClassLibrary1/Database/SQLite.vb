@@ -55,7 +55,6 @@ Public Class SQLite
             _con.ParseViaFramework = True
             _con.Open()
             _isConnected = True
-            _conType = 0
         Catch ex As Exception
             _isConnected = False
         End Try

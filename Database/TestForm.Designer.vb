@@ -37,11 +37,11 @@ Partial Class TestForm
         Me.tb_filename = New System.Windows.Forms.TextBox()
         Me.tb_UID = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btn_open = New System.Windows.Forms.Button()
-        Me.btn_close = New System.Windows.Forms.Button()
-        Me.cb_foldername = New System.Windows.Forms.ComboBox()
         Me.lb_table = New System.Windows.Forms.Label()
         Me.tb_tablename = New System.Windows.Forms.TextBox()
+        Me.cb_foldername = New System.Windows.Forms.ComboBox()
+        Me.btn_close = New System.Windows.Forms.Button()
+        Me.btn_open = New System.Windows.Forms.Button()
         CType(Me.DataGridViewTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -49,16 +49,16 @@ Partial Class TestForm
         'DataGridViewTable
         '
         Me.DataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewTable.Location = New System.Drawing.Point(16, 228)
+        Me.DataGridViewTable.Location = New System.Drawing.Point(16, 194)
         Me.DataGridViewTable.Name = "DataGridViewTable"
         Me.DataGridViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewTable.Size = New System.Drawing.Size(627, 99)
+        Me.DataGridViewTable.Size = New System.Drawing.Size(627, 203)
         Me.DataGridViewTable.TabIndex = 45
         '
         'tb_input
         '
         Me.tb_input.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tb_input.Location = New System.Drawing.Point(4, 190)
+        Me.tb_input.Location = New System.Drawing.Point(4, 156)
         Me.tb_input.Name = "tb_input"
         Me.tb_input.Size = New System.Drawing.Size(624, 20)
         Me.tb_input.TabIndex = 44
@@ -189,37 +189,10 @@ Partial Class TestForm
         Me.GroupBox1.Controls.Add(Me.btn_delete)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(644, 337)
+        Me.GroupBox1.Size = New System.Drawing.Size(644, 391)
         Me.GroupBox1.TabIndex = 46
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Test Box"
-        '
-        'btn_open
-        '
-        Me.btn_open.Location = New System.Drawing.Point(441, 77)
-        Me.btn_open.Name = "btn_open"
-        Me.btn_open.Size = New System.Drawing.Size(84, 23)
-        Me.btn_open.TabIndex = 29
-        Me.btn_open.Text = "Open"
-        Me.btn_open.UseVisualStyleBackColor = True
-        '
-        'btn_close
-        '
-        Me.btn_close.Location = New System.Drawing.Point(547, 77)
-        Me.btn_close.Name = "btn_close"
-        Me.btn_close.Size = New System.Drawing.Size(84, 23)
-        Me.btn_close.TabIndex = 30
-        Me.btn_close.Text = "Close"
-        Me.btn_close.UseVisualStyleBackColor = True
-        '
-        'cb_foldername
-        '
-        Me.cb_foldername.FormattingEnabled = True
-        Me.cb_foldername.Items.AddRange(New Object() {"PRODUCT", "USER"})
-        Me.cb_foldername.Location = New System.Drawing.Point(78, 102)
-        Me.cb_foldername.Name = "cb_foldername"
-        Me.cb_foldername.Size = New System.Drawing.Size(190, 21)
-        Me.cb_foldername.TabIndex = 45
         '
         'lb_table
         '
@@ -237,11 +210,38 @@ Partial Class TestForm
         Me.tb_tablename.Size = New System.Drawing.Size(190, 20)
         Me.tb_tablename.TabIndex = 46
         '
+        'cb_foldername
+        '
+        Me.cb_foldername.FormattingEnabled = True
+        Me.cb_foldername.Items.AddRange(New Object() {"PRODUCT", "USER"})
+        Me.cb_foldername.Location = New System.Drawing.Point(78, 102)
+        Me.cb_foldername.Name = "cb_foldername"
+        Me.cb_foldername.Size = New System.Drawing.Size(190, 21)
+        Me.cb_foldername.TabIndex = 45
+        '
+        'btn_close
+        '
+        Me.btn_close.Location = New System.Drawing.Point(547, 77)
+        Me.btn_close.Name = "btn_close"
+        Me.btn_close.Size = New System.Drawing.Size(84, 23)
+        Me.btn_close.TabIndex = 30
+        Me.btn_close.Text = "Close"
+        Me.btn_close.UseVisualStyleBackColor = True
+        '
+        'btn_open
+        '
+        Me.btn_open.Location = New System.Drawing.Point(441, 77)
+        Me.btn_open.Name = "btn_open"
+        Me.btn_open.Size = New System.Drawing.Size(84, 23)
+        Me.btn_open.TabIndex = 29
+        Me.btn_open.Text = "Open"
+        Me.btn_open.UseVisualStyleBackColor = True
+        '
         'TestForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(670, 361)
+        Me.ClientSize = New System.Drawing.Size(670, 415)
         Me.Controls.Add(Me.DataGridViewTable)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "TestForm"

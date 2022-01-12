@@ -15,7 +15,6 @@ Public Class Databasemain
     Public _con
     Public _cmd
     Public Data
-    Public _conType As Boolean
     Public _fn
 
     Public Property Filename As String Implements IDatabase.Filename
