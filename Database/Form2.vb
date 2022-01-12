@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
-Imports ClassLibrary1
+Imports Database
 Imports Database.Form1
 Public Class Form2
 

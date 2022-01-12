@@ -9,12 +9,12 @@ Public Class Form1
 
     End Sub
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
-        'a.AddProduction("123123321", "TESTPRODUCTXV", 200, 30, "Hermina")
-        Dim form2 As New Form2
-        form2._testSQ = _testSQ
-        form2.a = a
-        Me.Hide()
-        form2.Show()
+        AddProduction("123123321", "TESTPRODUCTXV", 200, 30, "Hermina")
+        'Dim form2 As New Form2
+        'form2._testSQ = _testSQ
+        'form2.a = a
+        'Me.Hide()
+        'form2.Show()
     End Sub
     Public Sub AddProduction(PO_NUMBER As String, REFERENCE As String, QTY_PO As String, QTY_GROUP As String, USER As String)
 
