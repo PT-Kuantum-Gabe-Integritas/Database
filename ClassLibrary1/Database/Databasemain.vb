@@ -6,7 +6,7 @@ Imports System.Data.OleDb
 Imports System.Windows.Forms
 
 
-Public Class Database
+Public Class Databasemain
     Implements IDatabase
 
     Public _isConnected

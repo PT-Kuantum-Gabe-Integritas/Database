@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Data.OleDb
 Public Class Access
-    Inherits Database
+    Inherits Databasemain
     Private _fileName
     Private _dataType
     Sub New()

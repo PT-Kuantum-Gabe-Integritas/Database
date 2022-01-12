@@ -1,60 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Database.Database">
-    <Position X="5.5" Y="0.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+  <Class Name="Database.SQLite">
+    <Position X="4" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
+      <FileName>Database\SQLite.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DBManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAAAAAQAAAAAAAAAAAAEAAAAAAAAEAAAABAAAA=</HashCode>
+      <FileName>Database\DBManager.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Database.Databasemain">
+    <Position X="2.25" Y="1" Width="1.5" />
     <NestedTypes>
-      <Enum Name="Database.Database.DATATYPE" Collapsed="true">
+      <Enum Name="Database.Databasemain.DATATYPE" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>Classs\Database\Database.vb</NewMemberFileName>
+          <NewMemberFileName>Database\Databasemain.vb</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>BQCAAAAAAAECYAAAAEIAQRhAAAAEABAIAAAAIBCAUEA=</HashCode>
-      <FileName>Classs\Database\Database.vb</FileName>
+      <FileName>Database\Databasemain.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Database.SQLite">
-    <Position X="7.25" Y="0.75" Width="2" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAIAIAAAAIAQAAAAAAQAAAAAAAAAAAQAAABCAAAA=</HashCode>
-      <FileName>Classs\Database\SQLite.vb</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Database.Access">
-    <Position X="7.25" Y="3.75" Width="2" />
+    <Position X="4" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAIAQAAAAAAQAAAAAAAAAAAAAAABCAAAA=</HashCode>
-      <FileName>Classs\Database\Access.vb</FileName>
+      <FileName>Database\Access.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Database.DBManager">
-    <Position X="2" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAIgAAAAAAAQAAAAAAAAAAAAEAAAAAAAAEAAAABAAAA=</HashCode>
-      <FileName>Classs\Database\DBManager.vb</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Interface Name="Database.IDatabase">
-    <Position X="3.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BQAAAAAAAAEAYAAAAAAAQAgAAAAEAAAAAAAAIACAUAA=</HashCode>
-      <FileName>Classs\Database\IDatabase.vb</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="Database.IDBManager">
-    <Position X="2" Y="3.75" Width="1.5" />
+  <Interface Name="Database.IDBManager" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>Classs\Database\IDBManager.vb</FileName>
+      <FileName>Database\IDBManager.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Database.IDatabase" Collapsed="true">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAAAAEAYAAAAAAAQAgAAAAEAAAAAAAAIACAUAA=</HashCode>
+      <FileName>Database\IDatabase.vb</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

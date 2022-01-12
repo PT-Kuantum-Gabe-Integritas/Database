@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
-Imports Database.DBManager
-Imports Database.SQLite
+Imports ClassLibrary1
 Imports Database.Form1
 Public Class Form2
 
@@ -13,6 +12,6 @@ Public Class Form2
 
     End Sub
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
-        'productsq.AddProduction("123123321", "TESTPRODUCTXV", 200, 30, "Hermina")
+        'a.AddProduction("123123321", "TESTPRODUCTXV", 200, 30, "Hermina")
     End Sub
 End Class

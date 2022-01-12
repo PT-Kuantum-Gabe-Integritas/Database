@@ -1,11 +1,9 @@
 ﻿Imports System.IO
 Imports System.Data.SQLite
 Imports System.Threading
-Imports Database.DBManager
-Imports Database
 
 Public Class SQLite
-    Inherits Database
+    Inherits Databasemain
     Private _fileName
     Private _dataType
     Sub New()
@@ -47,11 +45,6 @@ Public Class SQLite
         End If
         MyBase.ExecNonQuery(cmd)
     End Sub
-    Private Function connectionBuilder()
-        Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
-        _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName + ".db") & ";Version=3;"
-        Return folderPath
-    End Function
 
     Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
@@ -79,13 +72,6 @@ Public Class SQLite
 
         End Try
         MyBase.Close()
-    End Sub
-    Public Sub AddProduction(PO_NUMBER As String, REFERENCE As String, QTY_PO As String, QTY_GROUP As String, USER As String)
-
-        Dim str_param As String = "('po_number','reference','qty_po','qty_group','user')"
-        Dim str_val As String = String.Format("('{0}','{1}','{2}','{3}','{4}')", PO_NUMBER, REFERENCE, QTY_PO, QTY_GROUP, USER)
-        DBInsert("PRODUCT", str_param, str_val)
-
     End Sub
 
 End Class

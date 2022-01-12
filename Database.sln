@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Database", "Database\Database.vbproj", "{6F6789FD-4F98-4834-9006-38D22EC78297}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Databasetest", "Database\Databasetest.vbproj", "{6F6789FD-4F98-4834-9006-38D22EC78297}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.vbproj", "{D8831368-D71B-4115-9587-D0E34210B29C}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Database", "ClassLibrary1\Database.vbproj", "{D8831368-D71B-4115-9587-D0E34210B29C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
