@@ -21,7 +21,7 @@ Public Class Access
     Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
-            _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, _fileName + ".accdb") & ";"
+            _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, _fileName) & ";"
             _con = New OleDbConnection(_connectionString)
             _cmd = New OleDbCommand()
             _con.Open()

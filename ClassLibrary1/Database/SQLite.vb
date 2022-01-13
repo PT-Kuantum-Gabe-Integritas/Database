@@ -49,7 +49,7 @@ Public Class SQLite
     Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
-            _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName + ".db") & ";Version=3;"
+            _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName) & ";Version=3;"
             _con = New SQLiteConnection(_connectionString)
             _cmd = New SQLiteCommand()
             _con.ParseViaFramework = True

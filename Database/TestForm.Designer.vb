@@ -24,7 +24,6 @@ Partial Class TestForm
     Private Sub InitializeComponent()
         Me.DataGridViewTable = New System.Windows.Forms.DataGridView()
         Me.tb_input = New System.Windows.Forms.TextBox()
-        Me.btn_save = New System.Windows.Forms.Button()
         Me.btn_update = New System.Windows.Forms.Button()
         Me.btn_refresh = New System.Windows.Forms.Button()
         Me.btn_delete = New System.Windows.Forms.Button()
@@ -34,9 +33,13 @@ Partial Class TestForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.bnt_clearall = New System.Windows.Forms.Button()
-        Me.tb_filename = New System.Windows.Forms.TextBox()
         Me.tb_UID = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tb_val = New System.Windows.Forms.TextBox()
+        Me.lb_val = New System.Windows.Forms.Label()
+        Me.cb_columname = New System.Windows.Forms.ComboBox()
+        Me.cb_filename = New System.Windows.Forms.ComboBox()
+        Me.lb_delete = New System.Windows.Forms.Label()
         Me.lb_table = New System.Windows.Forms.Label()
         Me.tb_tablename = New System.Windows.Forms.TextBox()
         Me.cb_foldername = New System.Windows.Forms.ComboBox()
@@ -49,7 +52,7 @@ Partial Class TestForm
         'DataGridViewTable
         '
         Me.DataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewTable.Location = New System.Drawing.Point(16, 194)
+        Me.DataGridViewTable.Location = New System.Drawing.Point(0, 188)
         Me.DataGridViewTable.Name = "DataGridViewTable"
         Me.DataGridViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewTable.Size = New System.Drawing.Size(627, 203)
@@ -62,15 +65,6 @@ Partial Class TestForm
         Me.tb_input.Name = "tb_input"
         Me.tb_input.Size = New System.Drawing.Size(624, 20)
         Me.tb_input.TabIndex = 44
-        '
-        'btn_save
-        '
-        Me.btn_save.Location = New System.Drawing.Point(547, 106)
-        Me.btn_save.Name = "btn_save"
-        Me.btn_save.Size = New System.Drawing.Size(84, 23)
-        Me.btn_save.TabIndex = 43
-        Me.btn_save.Text = "Save"
-        Me.btn_save.UseVisualStyleBackColor = True
         '
         'btn_update
         '
@@ -105,7 +99,7 @@ Partial Class TestForm
         Me.cb_type.Items.AddRange(New Object() {"-SQLite", "-Access"})
         Me.cb_type.Location = New System.Drawing.Point(78, 129)
         Me.cb_type.Name = "cb_type"
-        Me.cb_type.Size = New System.Drawing.Size(190, 21)
+        Me.cb_type.Size = New System.Drawing.Size(100, 21)
         Me.cb_type.TabIndex = 37
         '
         'Label6
@@ -120,7 +114,7 @@ Partial Class TestForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(5, 102)
+        Me.Label3.Location = New System.Drawing.Point(5, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 13)
         Me.Label3.TabIndex = 31
@@ -129,7 +123,7 @@ Partial Class TestForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(5, 49)
+        Me.Label2.Location = New System.Drawing.Point(5, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 13)
         Me.Label2.TabIndex = 30
@@ -138,7 +132,7 @@ Partial Class TestForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(5, 23)
+        Me.Label1.Location = New System.Drawing.Point(5, 28)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(26, 13)
         Me.Label1.TabIndex = 29
@@ -146,19 +140,12 @@ Partial Class TestForm
         '
         'bnt_clearall
         '
-        Me.bnt_clearall.Location = New System.Drawing.Point(547, 19)
+        Me.bnt_clearall.Location = New System.Drawing.Point(547, 106)
         Me.bnt_clearall.Name = "bnt_clearall"
         Me.bnt_clearall.Size = New System.Drawing.Size(84, 23)
         Me.bnt_clearall.TabIndex = 28
         Me.bnt_clearall.Text = "Clear All"
         Me.bnt_clearall.UseVisualStyleBackColor = True
-        '
-        'tb_filename
-        '
-        Me.tb_filename.Location = New System.Drawing.Point(78, 50)
-        Me.tb_filename.Name = "tb_filename"
-        Me.tb_filename.Size = New System.Drawing.Size(190, 20)
-        Me.tb_filename.TabIndex = 26
         '
         'tb_UID
         '
@@ -169,6 +156,12 @@ Partial Class TestForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.tb_val)
+        Me.GroupBox1.Controls.Add(Me.lb_val)
+        Me.GroupBox1.Controls.Add(Me.cb_columname)
+        Me.GroupBox1.Controls.Add(Me.DataGridViewTable)
+        Me.GroupBox1.Controls.Add(Me.cb_filename)
+        Me.GroupBox1.Controls.Add(Me.lb_delete)
         Me.GroupBox1.Controls.Add(Me.lb_table)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -179,8 +172,6 @@ Partial Class TestForm
         Me.GroupBox1.Controls.Add(Me.tb_input)
         Me.GroupBox1.Controls.Add(Me.btn_open)
         Me.GroupBox1.Controls.Add(Me.btn_update)
-        Me.GroupBox1.Controls.Add(Me.btn_save)
-        Me.GroupBox1.Controls.Add(Me.tb_filename)
         Me.GroupBox1.Controls.Add(Me.bnt_clearall)
         Me.GroupBox1.Controls.Add(Me.tb_UID)
         Me.GroupBox1.Controls.Add(Me.cb_type)
@@ -194,10 +185,51 @@ Partial Class TestForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Test Box"
         '
+        'tb_val
+        '
+        Me.tb_val.Location = New System.Drawing.Point(261, 56)
+        Me.tb_val.Name = "tb_val"
+        Me.tb_val.Size = New System.Drawing.Size(100, 20)
+        Me.tb_val.TabIndex = 53
+        '
+        'lb_val
+        '
+        Me.lb_val.AutoSize = True
+        Me.lb_val.Location = New System.Drawing.Point(219, 56)
+        Me.lb_val.Name = "lb_val"
+        Me.lb_val.Size = New System.Drawing.Size(22, 13)
+        Me.lb_val.TabIndex = 52
+        Me.lb_val.Text = "Val"
+        '
+        'cb_columname
+        '
+        Me.cb_columname.FormattingEnabled = True
+        Me.cb_columname.Location = New System.Drawing.Point(261, 29)
+        Me.cb_columname.Name = "cb_columname"
+        Me.cb_columname.Size = New System.Drawing.Size(100, 21)
+        Me.cb_columname.TabIndex = 51
+        '
+        'cb_filename
+        '
+        Me.cb_filename.FormattingEnabled = True
+        Me.cb_filename.Location = New System.Drawing.Point(78, 77)
+        Me.cb_filename.Name = "cb_filename"
+        Me.cb_filename.Size = New System.Drawing.Size(100, 21)
+        Me.cb_filename.TabIndex = 50
+        '
+        'lb_delete
+        '
+        Me.lb_delete.AutoSize = True
+        Me.lb_delete.Location = New System.Drawing.Point(219, 29)
+        Me.lb_delete.Name = "lb_delete"
+        Me.lb_delete.Size = New System.Drawing.Size(36, 13)
+        Me.lb_delete.TabIndex = 49
+        Me.lb_delete.Text = "param"
+        '
         'lb_table
         '
         Me.lb_table.AutoSize = True
-        Me.lb_table.Location = New System.Drawing.Point(5, 76)
+        Me.lb_table.Location = New System.Drawing.Point(5, 103)
         Me.lb_table.Name = "lb_table"
         Me.lb_table.Size = New System.Drawing.Size(65, 13)
         Me.lb_table.TabIndex = 47
@@ -205,18 +237,17 @@ Partial Class TestForm
         '
         'tb_tablename
         '
-        Me.tb_tablename.Location = New System.Drawing.Point(78, 76)
+        Me.tb_tablename.Location = New System.Drawing.Point(78, 103)
         Me.tb_tablename.Name = "tb_tablename"
-        Me.tb_tablename.Size = New System.Drawing.Size(190, 20)
+        Me.tb_tablename.Size = New System.Drawing.Size(100, 20)
         Me.tb_tablename.TabIndex = 46
         '
         'cb_foldername
         '
         Me.cb_foldername.FormattingEnabled = True
-        Me.cb_foldername.Items.AddRange(New Object() {"PRODUCT", "USER"})
-        Me.cb_foldername.Location = New System.Drawing.Point(78, 102)
+        Me.cb_foldername.Location = New System.Drawing.Point(78, 51)
         Me.cb_foldername.Name = "cb_foldername"
-        Me.cb_foldername.Size = New System.Drawing.Size(190, 21)
+        Me.cb_foldername.Size = New System.Drawing.Size(100, 21)
         Me.cb_foldername.TabIndex = 45
         '
         'btn_close
@@ -242,7 +273,6 @@ Partial Class TestForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(670, 415)
-        Me.Controls.Add(Me.DataGridViewTable)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "TestForm"
         Me.Text = "TestForm"
@@ -255,7 +285,6 @@ Partial Class TestForm
 
     Friend WithEvents DataGridViewTable As DataGridView
     Friend WithEvents tb_input As TextBox
-    Friend WithEvents btn_save As Button
     Friend WithEvents btn_update As Button
     Friend WithEvents btn_refresh As Button
     Friend WithEvents btn_delete As Button
@@ -265,7 +294,6 @@ Partial Class TestForm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents bnt_clearall As Button
-    Friend WithEvents tb_filename As TextBox
     Friend WithEvents tb_UID As TextBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btn_close As Button
@@ -273,4 +301,9 @@ Partial Class TestForm
     Friend WithEvents cb_foldername As ComboBox
     Friend WithEvents lb_table As Label
     Friend WithEvents tb_tablename As TextBox
+    Friend WithEvents lb_delete As Label
+    Friend WithEvents cb_filename As ComboBox
+    Friend WithEvents cb_columname As ComboBox
+    Friend WithEvents tb_val As TextBox
+    Friend WithEvents lb_val As Label
 End Class

@@ -77,7 +77,7 @@ Public Class Databasemain
     Public Sub DBDelete(table As String, where As String) Implements IDatabase.DBDelete
         Dim query As String = ""
         If _isConnected Then
-            query = String.Format("DELETE FROM {0} WHER {1}", table, where)
+            query = String.Format("DELETE FROM {0} WHERE {1}", table, where)
         End If
         ExecNonQuery(query)
     End Sub
