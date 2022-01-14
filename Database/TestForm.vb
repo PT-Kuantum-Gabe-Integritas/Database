@@ -8,11 +8,11 @@ Public Class TestForm
     Private Sub btn_open_Click(sender As Object, e As EventArgs) Handles btn_open.Click
         If cb_type.Text = "-SQLite" Then
             SQL = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
-            MsgBox(SQL._isConnected)
+            'MsgBox(SQL._isConnected)
             loadTable(cb_type.Text)
         ElseIf cb_type.Text = "-Access" Then
             ACC = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
-            MsgBox(ACC._isConnected)
+            'MsgBox(ACC._isConnected)
             loadTable(cb_type.Text)
         End If
     End Sub
@@ -129,6 +129,10 @@ Public Class TestForm
     End Sub
 
     Private Sub lb_val_Click(sender As Object, e As EventArgs) Handles lb_val.Click
+
+    End Sub
+
+    Private Sub tb_UID_TextChanged(sender As Object, e As EventArgs) Handles tb_UID.TextChanged
 
     End Sub
 End Class

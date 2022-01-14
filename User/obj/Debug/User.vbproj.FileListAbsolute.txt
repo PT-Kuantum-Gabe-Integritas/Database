@@ -1,0 +1,17 @@
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\User.exe.config
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.vbprojResolveAssemblyReference.cache
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.frmLogin.resources
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.Resources.resources
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.vbproj.GenerateResource.Cache
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.xml
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\User.exe
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\User.pdb
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\User.xml
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\Database.dll
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\System.Data.SQLite.dll
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\Database.pdb
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\System.Data.SQLite.xml
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.exe
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.pdb
+C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\EasyModbus.dll
+C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.frmUserManagement.resources

@@ -33,7 +33,7 @@ Public Class SQLite
 
         End If
 
-        Return MyBase.ExecQuery(cmd)
+        Return dt ' MyBase.ExecQuery(cmd)
     End Function
 
     Public Overrides Sub ExecNonQuery(cmd As String)

@@ -8,18 +8,15 @@ Public Class DBManager
     Private dbL
     Public Property DBTYPE As String
     Public Property FILENAME As String
-
     Public Sub New(ByVal _filename As String,
                    ByVal _dbType As Databasemain.DATATYPE)
         FILENAME = _filename
         DBTYPE = _dbType
 
     End Sub
-
     Public Sub New()
 
     End Sub
-
     Public Function GetDataBase(filename As String, uid As String, type As String, Folder As String) As IDatabase Implements IDBManager.GetDataBase
         Dim result = (From db In DBList Where db.UID = uid).ToArray()
         If result.Count > 0 Then
@@ -29,8 +26,6 @@ Public Class DBManager
         End If
         Return dbL
     End Function
-
-
     Private Function Add(filename As String, type As String, uid As String, Folder As String) Implements IDBManager.Add
         Dim sq As SQLite = New SQLite()
         Dim oled As Access = New Access()

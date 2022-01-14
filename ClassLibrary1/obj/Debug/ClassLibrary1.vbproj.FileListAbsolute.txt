@@ -1,0 +1,12 @@
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.vbprojResolveAssemblyReference.cache
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.Resources.resources
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.vbproj.GenerateResource.Cache
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.xml
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\ClassLibrary1.xml
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\EasyModbus.dll
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\System.Data.SQLite.dll
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\bin\Debug\System.Data.SQLite.xml
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Judi\Documents\GitHub\Database\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
