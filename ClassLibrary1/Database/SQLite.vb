@@ -47,7 +47,9 @@ Public Class SQLite
     End Sub
 
     Public Overrides Sub Open()
+
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
+        FolderExist(folderPath)
         Try
             _connectionString = "Data Source =" & IO.Path.Combine(folderPath, _fileName) & ";Version=3;"
             _con = New SQLiteConnection(_connectionString)

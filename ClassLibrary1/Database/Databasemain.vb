@@ -82,7 +82,7 @@ Public Class Databasemain
         ExecNonQuery(query)
     End Sub
 
-    Private Sub FolderExist(path As String) Implements IDatabase.FolderExist
+    Public Sub FolderExist(path As String) Implements IDatabase.FolderExist
         If Not Directory.Exists(path) Then
             Directory.CreateDirectory(path)
         End If

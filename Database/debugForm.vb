@@ -7,7 +7,7 @@ Public Class debugForm
 
     Private Sub btn_open_Click(sender As Object, e As EventArgs) Handles btn_open.Click
         If cb_type.Text = "-SQLite" Then
-            SQL = testDatabase.GetDataBase("User.db", "US1", "-SQLite", "CONFIG")
+            SQL = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
             loadTable(cb_type.Text)
             loadCon(cb_type.Text)
             cb_list.Items.Add(SQL.UID)

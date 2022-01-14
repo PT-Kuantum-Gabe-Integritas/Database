@@ -5,7 +5,7 @@ Public Class frmUserManagement
     Private SQL As SQLite = New SQLite()
     Private ACC As Access = New Access()
 
-    Private Sub btn_open_Click(sender As Object, e As EventArgs) Handles btn_open.Click
+    Private Sub btn_open_Click(sender As Object, e As EventArgs) Handles btn_open.Click, btn_add.Click
     End Sub
     Private Sub loadTable(type As String)
         Dim TableDB As New DataTable
