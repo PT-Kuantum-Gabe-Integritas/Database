@@ -15,4 +15,3 @@ C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.exe
 C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.pdb
 C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\EasyModbus.dll
 C:\Users\Judi\Documents\GitHub\Database\User\obj\Debug\User.frmUserManagement.resources
-C:\Users\Judi\Documents\GitHub\Database\User\bin\Debug\Database.xml

@@ -35,9 +35,9 @@ Public Class DBManager
         Return dbL
     End Function
 
-    Public Function CloseDataBase(param As Boolean, uid As String) As IDatabase Implements IDBManager.CloseDataBase
+    Public Function CloseDataBase(uid As String) As IDatabase Implements IDBManager.CloseDataBase
         Dim result = (From db In DBList Where db.UID = uid).ToArray()
-        If result.Count > 0 And param Then
+        If result.Count > 0 Then
             Try
                 Dim sq As SQLite = result.ElementAt(0)
                 sq.Close()

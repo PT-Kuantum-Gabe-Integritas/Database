@@ -114,7 +114,7 @@ Public Class debugForm
     End Sub
 
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
-        testDatabase.CloseDataBase(0, cb_list.Text)
+        testDatabase.CloseDataBase(cb_list.Text)
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
