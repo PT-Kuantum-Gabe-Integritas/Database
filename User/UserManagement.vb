@@ -6,7 +6,7 @@ Public Class UserManagement
     Implements IUserManagement
     Private _path As String = Application.StartupPath
     Private _currUser As UserData = Nothing
-    Private getdatabase As DBManager = New DBManager()
+    Private getdatabase As DBManager = DBManager.getInstance()
     Private _dbUser As SQLite = New SQLite()
 
     Public Property CurrentUser As UserData
@@ -76,7 +76,6 @@ Public Class UserManagement
     Function AddUser() As Boolean Implements IUserManagement.AddUser
         Dim _success As Boolean
 
-
         Return _success
     End Function
 
@@ -84,4 +83,13 @@ Public Class UserManagement
         _currUser = Nothing
     End Sub
 
+    Public Function loadTable()
+        Dim TableDB As New DataTable
+        Try
+            _dbUser.DBLoad("tb_user", TableDB, _dbUser._con)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Return TableDB
+    End Function
 End Class

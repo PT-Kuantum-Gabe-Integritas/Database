@@ -1,7 +1,7 @@
 ﻿Imports Database
 Public Class TestForm
     Private _path As String = Application.StartupPath
-    Private testDatabase As DBManager = New DBManager()
+    Private testDatabase As DBManager = DBManager.getInstance()
     Private SQL As SQLite = New SQLite()
     Private ACC As Access = New Access()
 

@@ -8,21 +8,56 @@ Public Class DBManager
     Private dbL
     Public Property DBTYPE As String
     Public Property FILENAME As String
+    Private Shared objSingleton As DBManager
     Public Sub New(ByVal _filename As String,
                    ByVal _dbType As Databasemain.DATATYPE)
         FILENAME = _filename
         DBTYPE = _dbType
 
     End Sub
-    Public Sub New()
-
+    Private Sub New()
     End Sub
+    Public Shared Function getInstance() As DBManager
+        If (objSingleton Is Nothing) Then
+            objSingleton = New DBManager()
+        End If
+        Return objSingleton
+
+    End Function
+
     Public Function GetDataBase(filename As String, uid As String, type As String, Folder As String) As IDatabase Implements IDBManager.GetDataBase
         Dim result = (From db In DBList Where db.UID = uid).ToArray()
         If result.Count > 0 Then
             Return result.ElementAt(0)
         Else
             Return Add(filename, type, uid, Folder)
+        End If
+        Return dbL
+    End Function
+
+    Public Function CloseDataBase(param As Boolean, uid As String) As IDatabase Implements IDBManager.CloseDataBase
+        Dim result = (From db In DBList Where db.UID = uid).ToArray()
+        If result.Count > 0 And param Then
+            Try
+                Dim sq As SQLite = result.ElementAt(0)
+                sq.Close()
+                Dim oled As Access = result.ElementAt(0)
+                oled.Close()
+            Catch ex As Exception
+
+            End Try
+        Else
+            Try
+                For Each _result In DBList
+                    Dim sq As SQLite = _result
+                    sq.Close()
+                    Dim oled As Access = _result
+                    oled.Close()
+                Next
+            Catch ex As Exception
+
+            End Try
+            Return dbL
         End If
         Return dbL
     End Function

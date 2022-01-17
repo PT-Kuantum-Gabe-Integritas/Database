@@ -1,6 +1,6 @@
 ﻿Imports Database
 Public Class Form1
-    Private _testSQ As IDBManager = New DBManager()
+    Private _testSQ As IDBManager = DBManager.getInstance()
     Private a As SQLite = New SQLite()
     Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
         a = _testSQ.GetDataBase("PRODUCT", "1", "0", Database.Databasemain.DATATYPE.USER)

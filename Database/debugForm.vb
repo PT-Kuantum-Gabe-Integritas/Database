@@ -1,7 +1,7 @@
 ﻿Imports Database
 Public Class debugForm
     Private _path As String = Application.StartupPath
-    Private testDatabase As DBManager = New DBManager()
+    Private testDatabase As DBManager = DBManager.getInstance()
     Private SQL As SQLite = New SQLite()
     Private ACC As Access = New Access()
 
@@ -108,13 +108,13 @@ Public Class debugForm
 
     Private Sub btn_refresh_Click(sender As Object, e As EventArgs) Handles btn_refresh.Click
         loadTable(cb_type.Text)
-        Dim dt As DataTable = New DataTable()
-        dt = SQL.DBSelect("pass", "tb_user", "'Engineer'", True, 3)
-        tb_info.Text = dt.ToString
+        'Dim dt As DataTable = New DataTable()
+        'dt = SQL.DBSelect("pass", "tb_user", "'Engineer'", True, 3)
+        'tb_info.Text = dt.ToString
     End Sub
 
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
-        Me.Close()
+        testDatabase.CloseDataBase(0, cb_list.Text)
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
