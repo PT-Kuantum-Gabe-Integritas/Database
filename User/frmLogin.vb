@@ -34,7 +34,8 @@
         End With
         If _userManager.ValidateUser(_newUser) Then
             'Main_ChangeUser()
-            lb_info.Text = "LOGGED"
+            Me.Hide()
+            frmUserManagement.Show()
         Else
             lb_info.Text = "Wrong Password!"
             lb_info.ForeColor = Color.Red
@@ -63,5 +64,6 @@
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         _userManager.Initialize()
+        Initialize()
     End Sub
 End Class

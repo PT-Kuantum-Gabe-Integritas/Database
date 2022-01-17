@@ -17,6 +17,7 @@ Public Class UserManagement
             _currUser = value
         End Set
     End Property
+
     Public Sub Initialize()
         _dbUser = getdatabase.GetDataBase("User.db", "US1", "-SQLite", "CONFIG")
     End Sub
@@ -36,6 +37,16 @@ Public Class UserManagement
         End Try
         Return autorized
     End Function
+    Public Function GetPermit(type As String) Implements IUserManagement.GetPermit
+        Dim dt As DataTable = New DataTable()
+        Try
+            Dim str_where As String = String.Format("user='{0}'", type)
+            dt = _dbUser.DBSelect("Dashboard, Run, Config, Manual, Reference, LOG, UserManage", "tb_user", str_where, False, 1)
+        Catch ex As Exception
+
+        End Try
+        Return dt
+    End Function
 
     Public Function GetUserList() As List(Of String) Implements IUserManagement.GetUserList
         Dim users As List(Of String) = New List(Of String)()
@@ -52,6 +63,7 @@ Public Class UserManagement
 
         Return users
     End Function
+
     Public Function ValidateUser(user As UserData) As Boolean Implements IUserManagement.ValidateUser
         Dim pass As String = ""
         Dim auth As Boolean = False
@@ -73,17 +85,31 @@ Public Class UserManagement
             Return .Logged
         End With
     End Function
-    Function AddUser() As Boolean Implements IUserManagement.AddUser
-        Dim _success As Boolean
 
+    Public Function AddUser(user As String, pass As String) As Boolean Implements IUserManagement.AddUser
+        Dim _success As Boolean
+        Dim str_where As String = String.Format("(user,pass)")
+        Dim str_val As String = String.Format("('{0}','{1}')", pass, user)
+        _dbUser.DBInsert("tb_user", str_where, str_val)
         Return _success
     End Function
+
+    Public Sub DeleteUser(param As String) Implements IUserManagement.DeleteUser
+        Dim str_where As String = String.Format("ID='{0}'", param)
+        _dbUser.DBDelete("tb_user", str_where)
+    End Sub
+
+    Public Sub UpdateUser(user As String, pass As String) Implements IUserManagement.UpdateUser
+        Dim str_where As String = String.Format("user = '{0}'", user)
+        Dim str_val As String = String.Format("pass = '{0}'", pass)
+        _dbUser.DBUpdate("tb_user", str_val, str_where)
+    End Sub
 
     Public Sub ClearUser() Implements IUserManagement.ClearUser
         _currUser = Nothing
     End Sub
 
-    Public Function loadTable()
+    Public Function loadTable() Implements IUserManagement.loadTable
         Dim TableDB As New DataTable
         Try
             _dbUser.DBLoad("tb_user", TableDB, _dbUser._con)

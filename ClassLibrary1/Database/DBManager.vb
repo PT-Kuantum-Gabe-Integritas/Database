@@ -46,19 +46,21 @@ Public Class DBManager
             Catch ex As Exception
 
             End Try
-        Else
-            Try
-                For Each _result In DBList
-                    Dim sq As SQLite = _result
-                    sq.Close()
-                    Dim oled As Access = _result
-                    oled.Close()
-                Next
-            Catch ex As Exception
-
-            End Try
-            Return dbL
         End If
+        Return dbL
+    End Function
+
+    Public Function CloseDataBase() As IDatabase Implements IDBManager.CloseDataBase
+        Try
+            For Each _result In DBList
+                Dim sq As SQLite = _result
+                sq.Close()
+                Dim oled As Access = _result
+                oled.Close()
+            Next
+        Catch ex As Exception
+
+        End Try
         Return dbL
     End Function
     Private Function Add(filename As String, type As String, uid As String, Folder As String) Implements IDBManager.Add
