@@ -6,18 +6,32 @@ Public Class debugForm
     Private ACC As Access = New Access()
 
     Private Sub btn_open_Click(sender As Object, e As EventArgs) Handles btn_open.Click
-        If cb_type.Text = "-SQLite" Then
-            SQL = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
-            loadTable(cb_type.Text)
-            loadCon(cb_type.Text)
-            cb_list.Items.Add(SQL.UID)
-        ElseIf cb_type.Text = "-Access" Then
-            ACC = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
-            loadTable(cb_type.Text)
-            loadCon(cb_type.Text)
-            cb_list.Items.Add(ACC.UID)
+        If tb_UID.Text = "" Or cb_filename.Text = "" Or cb_foldername.Text = "" Then
+            tb_info.Text = "please make sure uid, file name, and foldername is correct"
         Else
-            tb_info.Text = "type = -SQLite/-Access"
+            Try
+                If cb_type.Text = "-SQLite" Then
+                    SQL = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
+                    loadTable(cb_type.Text)
+                    loadCon(cb_type.Text)
+                    If cb_list.Items.Contains(SQL.UID) Then
+                    Else
+                        cb_list.Items.Add(SQL.UID)
+                    End If
+                ElseIf cb_type.Text = "-Access" Then
+                    ACC = testDatabase.GetDataBase(cb_filename.Text, tb_UID.Text, cb_type.Text, cb_foldername.Text)
+                    loadTable(cb_type.Text)
+                    loadCon(cb_type.Text)
+                    If cb_list.Items.Contains(ACC.UID) Then
+                    Else
+                        cb_list.Items.Add(ACC.UID)
+                    End If
+                Else
+                    tb_info.Text = "type = -SQLite/-Access"
+                End If
+            Catch ex As Exception
+                tb_info.Text = ex.Message
+            End Try
         End If
 
     End Sub
@@ -31,7 +45,7 @@ Public Class debugForm
                 DataGridViewTable.ClearSelection()
 
             Catch ex As Exception
-                MsgBox(ex.Message)
+                tb_info.Text = ex.Message & " make sure table name is corect"
             End Try
         ElseIf type = "-Access" Then
             Try
@@ -41,7 +55,8 @@ Public Class debugForm
                 DataGridViewTable.ClearSelection()
 
             Catch ex As Exception
-                MsgBox(ex.Message)
+                tb_info.Text = ex.Message & " make sure table name is corect"
+
             End Try
         Else
             tb_info.Text = "type = -SQLite/-Access"
@@ -56,26 +71,34 @@ Public Class debugForm
         Next
     End Sub
     Private Sub loadCon(type As String)
-        If cb_type.Text = "-SQLite" Then
-            tb_cmd.Text = SQL._cmd.ToString
-            tb_con.Text = SQL._con.ToString
-            tb_connectionstring.Text = SQL._connectionString
-            tb_data.Text = SQL.Data
-            tb_fn.Text = SQL._fn.ToString
-            tb_isConnected.Text = SQL._isConnected
-            tb_path.Text = SQL._path
-        ElseIf cb_type.Text = "-Access" Then
-        Else
-            tb_info.Text = "type = -SQLite/-Access"
-        End If
-        'tb_info.Multiline = True
-        'tb_info.Text = "Line 1"
-        'tb_info.Text = tb_info.Text & ControlChars.NewLine & "Line 2"
+        Try
+            If cb_type.Text = "-SQLite" Then
+                tb_cmd.Text = SQL._cmd.ToString
+                tb_con.Text = SQL._con.ToString
+                tb_connectionstring.Text = SQL._connectionString
+                tb_data.Text = SQL.Data
+                tb_fn.Text = SQL._fn.ToString
+                tb_isConnected.Text = SQL._isConnected
+                tb_path.Text = SQL._path
+            ElseIf cb_type.Text = "-Access" Then
+                tb_cmd.Text = ACC._cmd.ToString
+                tb_con.Text = ACC._con.ToString
+                tb_connectionstring.Text = ACC._connectionString
+                tb_data.Text = ACC.Data
+                tb_fn.Text = ACC._fn.ToString
+                tb_isConnected.Text = ACC._isConnected
+                tb_path.Text = ACC._path
+            Else
+                tb_info.Text = "type = -SQLite/-Access"
+            End If
+        Catch ex As Exception
+            tb_info.Text = ex.Message
+        End Try
+
     End Sub
 
     Private Sub bnt_clearall_Click(sender As Object, e As EventArgs) Handles bnt_clearall.Click
 
-        'tb_input.Clear()
         tb_tablename.Clear()
         tb_UID.Clear()
         tb_val.Clear()
@@ -83,6 +106,7 @@ Public Class debugForm
         cb_filename.SelectedIndex = -1
         cb_foldername.SelectedIndex = -1
         cb_type.SelectedIndex = -1
+        cb_list.SelectedIndex = -1
         cb_columname.Items.Clear()
         cb_filename.Items.Clear()
         cb_foldername.Items.Clear()
@@ -95,46 +119,64 @@ Public Class debugForm
     End Sub
 
     Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-        If cb_type.Text = "-SQLite" Then
-            SQL.DBDelete(tb_tablename.Text, cb_columname.Text & "=" & "'" & tb_val.Text & "'")
-        ElseIf cb_type.Text = "-Access" Then
-            ACC.DBDelete(tb_tablename.Text, cb_columname.Text & "=" & "'" & tb_val.Text & "'")
-        Else
-            tb_info.Text = "type = -SQLite/-Access"
-        End If
-        loadTable(cb_type.Text)
-        loadCon(cb_type.Text)
+        Try
+            If cb_type.Text = "-SQLite" Then
+                SQL.DBDelete(tb_tablename.Text, cb_columname.Text & "=" & "'" & tb_val.Text & "'")
+            ElseIf cb_type.Text = "-Access" Then
+                ACC.DBDelete(tb_tablename.Text, cb_columname.Text & "=" & "'" & tb_val.Text & "'")
+            Else
+                tb_info.Text = "type = -SQLite/-Access"
+            End If
+            loadTable(cb_type.Text)
+            loadCon(cb_type.Text)
+        Catch ex As Exception
+            tb_info.Text = ex.Message
+        End Try
+
     End Sub
 
     Private Sub btn_refresh_Click(sender As Object, e As EventArgs) Handles btn_refresh.Click
         loadTable(cb_type.Text)
-        'Dim dt As DataTable = New DataTable()
-        'dt = SQL.DBSelect("pass", "tb_user", "'Engineer'", True, 3)
-        'tb_info.Text = dt.ToString
+        loadCon(cb_type.Text)
+        'cb_list.Items.Add(testDatabase.DBList.ToArray)
     End Sub
 
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
-        testDatabase.CloseDataBase(cb_list.Text)
+        If cb_list.SelectedIndex = -1 Then
+            tb_info.Text = ("select uid")
+        End If
+        Try
+            testDatabase.CloseDataBase(cb_list.Text)
+            tb_info.Text = ("data base closed")
+        Catch ex As Exception
+            tb_info.Text = ex.Message
+        End Try
+        loadCon(cb_type.Text)
     End Sub
 
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
-        If cb_type.Text = "-SQLite" Then
-            For Each row As DataGridViewRow In DataGridViewTable.SelectedRows
-                If row.Selected = True Then
-                    SQL.DBUpdate(tb_tablename.Text, cb_columname.Text & "='" & tb_val.Text & "'", cb_columname.Items(0) & "='" & row.DataBoundItem(0).ToString() & "'")
-                End If
-            Next
-        ElseIf cb_type.Text = "-Access" Then
-            For Each row As DataGridViewRow In DataGridViewTable.SelectedRows
-                If row.Selected = True Then
-                    ACC.DBUpdate(tb_tablename.Text, cb_columname.Text & "='" & tb_val.Text & "'", cb_columname.Items(0) & "='" & row.DataBoundItem(0).ToString() & "'")
-                End If
-            Next
-        Else
-            tb_info.Text = "type = -SQLite/-Access"
-        End If
-        loadTable(cb_type.Text)
-        loadCon(cb_type.Text)
+        Try
+            If cb_type.Text = "-SQLite" Then
+                For Each row As DataGridViewRow In DataGridViewTable.SelectedRows
+                    If row.Selected = True Then
+                        SQL.DBUpdate(tb_tablename.Text, cb_columname.Text & "='" & tb_val.Text & "'", cb_columname.Items(0) & "='" & row.DataBoundItem(0).ToString() & "'")
+                    End If
+                Next
+            ElseIf cb_type.Text = "-Access" Then
+                For Each row As DataGridViewRow In DataGridViewTable.SelectedRows
+                    If row.Selected = True Then
+                        ACC.DBUpdate(tb_tablename.Text, cb_columname.Text & "='" & tb_val.Text & "'", cb_columname.Items(0) & "='" & row.DataBoundItem(0).ToString() & "'")
+                    End If
+                Next
+            Else
+                tb_info.Text = "type = -SQLite/-Access"
+            End If
+            loadTable(cb_type.Text)
+            loadCon(cb_type.Text)
+        Catch ex As Exception
+            tb_info.Text = ex.Message
+        End Try
+
     End Sub
 
     Private Sub TestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -156,16 +198,19 @@ Public Class debugForm
 
     Private Sub cb_list_SelectedValueChanged(sender As Object, e As EventArgs) Handles cb_list.SelectedValueChanged
         If cb_type.Text = "-SQLite" Then
-            SQL = testDatabase.GetDataBase(cb_filename.Text, cb_list.Text, cb_type.Text, cb_foldername.Text)
-            'MsgBox(SQL._isConnected)
             loadTable(cb_type.Text)
             loadCon(cb_type.Text)
-            cb_list.Items.Add(SQL.UID)
+            If cb_list.Items.Contains(SQL.UID) Then
+            Else
+                cb_list.Items.Add(SQL.UID)
+            End If
         ElseIf cb_type.Text = "-Access" Then
-            ACC = testDatabase.GetDataBase(cb_filename.Text, cb_list.Text, cb_type.Text, cb_foldername.Text)
-            'MsgBox(ACC._isConnected)
             loadTable(cb_type.Text)
-            cb_list.Items.Add(ACC.UID)
+            loadCon(cb_type.Text)
+            If cb_list.Items.Contains(ACC.UID) Then
+            Else
+                cb_list.Items.Add(ACC.UID)
+            End If
         Else
             tb_info.Text = "type = -SQLite/-Access"
         End If

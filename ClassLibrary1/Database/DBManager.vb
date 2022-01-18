@@ -9,14 +9,17 @@ Public Class DBManager
     Public Property DBTYPE As String
     Public Property FILENAME As String
     Private Shared objSingleton As DBManager
+
     Public Sub New(ByVal _filename As String,
                    ByVal _dbType As Databasemain.DATATYPE)
         FILENAME = _filename
         DBTYPE = _dbType
 
     End Sub
+
     Private Sub New()
     End Sub
+
     Public Shared Function getInstance() As DBManager
         If (objSingleton Is Nothing) Then
             objSingleton = New DBManager()
@@ -41,26 +44,33 @@ Public Class DBManager
             Try
                 Dim sq As SQLite = result.ElementAt(0)
                 sq.Close()
+            Catch ex As Exception
+            End Try
+            Try
                 Dim oled As Access = result.ElementAt(0)
                 oled.Close()
             Catch ex As Exception
-
             End Try
+            DBList.Remove(result.ElementAt(0))
         End If
         Return dbL
     End Function
 
     Public Function CloseDataBase() As IDatabase Implements IDBManager.CloseDataBase
-        Try
-            For Each _result In DBList
+        For Each _result In DBList
+            Try
                 Dim sq As SQLite = _result
                 sq.Close()
+            Catch ex As Exception
+            End Try
+            Try
                 Dim oled As Access = _result
                 oled.Close()
-            Next
-        Catch ex As Exception
+            Catch ex As Exception
+            End Try
 
-        End Try
+        Next
+        DBList.Clear()
         Return dbL
     End Function
     Private Function Add(filename As String, type As String, uid As String, Folder As String) Implements IDBManager.Add

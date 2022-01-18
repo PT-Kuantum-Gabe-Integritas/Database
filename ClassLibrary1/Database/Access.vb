@@ -23,11 +23,16 @@ Public Class Access
         Try
             _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, _fileName) & ";"
             _con = New OleDbConnection(_connectionString)
-            _cmd = New OleDbCommand()
             _con.Open()
+            _cmd = New OleDbCommand()
             _isConnected = True
         Catch ex As Exception
             _isConnected = False
+            MsgBox(ex.Message)
+        Finally
+            If _con.State = ConnectionState.Open Then
+                _con.Close()
+            End If
         End Try
     End Sub
 
@@ -36,6 +41,7 @@ Public Class Access
             If _isConnected Then
                 _cmd.Dispose()
                 _con.Close()
+                _isConnected = False
 
             End If
         Catch ex As Exception

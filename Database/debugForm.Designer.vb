@@ -378,7 +378,7 @@ Partial Class debugForm
         '
         Me.tb_info.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.tb_info.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tb_info.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tb_info.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tb_info.ForeColor = System.Drawing.Color.Red
         Me.tb_info.Location = New System.Drawing.Point(595, 127)
         Me.tb_info.Multiline = True

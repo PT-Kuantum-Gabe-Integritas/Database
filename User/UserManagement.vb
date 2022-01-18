@@ -27,10 +27,17 @@ Public Class UserManagement
         Try
             Dim str_where As String = String.Format("user='{0}'", type)
             Dim dt As DataTable = New DataTable()
+
             dt = _dbUser.DBSelect("pass, authorization", "tb_user", str_where, False, 1)
             If dt.Rows.Count > 0 Then
-                pass = dt.Rows(0).Item("pass")
                 autorized = Convert.ToBoolean(dt.Rows(0).Item("authorization"))
+
+                pass = String.Format("pass = '{0}'", pass)
+                Dim result() As DataRow = dt.Select(pass)
+                For Each row As DataRow In result
+                    pass = row(0)
+                Next
+
             End If
         Catch ex As Exception
 
@@ -64,8 +71,7 @@ Public Class UserManagement
         Return users
     End Function
 
-    Public Function ValidateUser(user As UserData) As Boolean Implements IUserManagement.ValidateUser
-        Dim pass As String = ""
+    Public Function ValidateUser(user As UserData, pass As String) As Boolean Implements IUserManagement.ValidateUser
         Dim auth As Boolean = False
         With user
             .Logged = False
@@ -88,8 +94,19 @@ Public Class UserManagement
 
     Public Function AddUser(user As String, pass As String) As Boolean Implements IUserManagement.AddUser
         Dim _success As Boolean
-        Dim str_where As String = String.Format("(user,pass)")
-        Dim str_val As String = String.Format("('{0}','{1}')", pass, user)
+        Dim str_where As String = ""
+        Dim str_val As String = ""
+        If user = "Engineer" Then
+            str_where = String.Format("(user,pass,authorization,Dashboard,Run,Config,Manual,Reference,LOG,UserManage)")
+            str_val = String.Format("('{0}','{1}','true','1','1','1','1','1','1','0')", user, pass)
+        ElseIf user = "Admin" Then
+            str_where = String.Format("(user,pass,authorization,Dashboard,Run,Config,Manual,Reference,LOG,UserManage)")
+            str_val = String.Format("('{0}','{1}','true','1','1','1','1','1','1','1')", user, pass)
+        ElseIf user = "Operator" Then
+            str_where = String.Format("(user,pass,authorization,Dashboard,Run,Config,Manual,Reference,LOG,UserManage)")
+            str_val = String.Format("('{0}','{1}','false','1','1','0','1','0','0','0')", user, pass)
+        End If
+
         _dbUser.DBInsert("tb_user", str_where, str_val)
         Return _success
     End Function

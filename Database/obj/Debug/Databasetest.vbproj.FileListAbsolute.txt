@@ -22,3 +22,4 @@ C:\Users\Judi\Documents\GitHub\Database\Database\obj\Debug\Databasetest.xml
 C:\Users\Judi\Documents\GitHub\Database\Database\obj\Debug\Databasetest.pdb
 C:\Users\Judi\Documents\GitHub\Database\Database\obj\Debug\Databasetest.TestForm.resources
 C:\Users\Judi\Documents\GitHub\Database\Database\obj\Debug\Databasetest.debugForm.resources
+C:\Users\Judi\Documents\GitHub\Database\Database\bin\Debug\Database.xml

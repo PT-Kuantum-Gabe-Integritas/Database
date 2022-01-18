@@ -3,7 +3,14 @@
     Public _userManager As UserManagement = New UserManagement()
     Public Sub Initialize()
         cb_user.Items.Clear()
-        cb_user.Items.AddRange(_userManager.GetUserList().ToArray())
+        Dim tb As DataTable = _userManager.loadTable()
+        For Each row As DataRow In tb.Rows
+            If cb_user.Items.Contains(row.Item(1)) Then
+
+            Else
+                cb_user.Items.Add(row.Item(1))
+            End If
+        Next
         cb_user.SelectedIndex = 0
         SetDisplay(False)
     End Sub
@@ -32,10 +39,10 @@
             End If
 
         End With
-        If _userManager.ValidateUser(_newUser) Then
+        If _userManager.ValidateUser(_newUser, tb_input.Text) Then
             'Main_ChangeUser()
-            Me.Hide()
             frmUserManagement.Show()
+            Me.Hide()
         Else
             lb_info.Text = "Wrong Password!"
             lb_info.ForeColor = Color.Red
