@@ -21,18 +21,14 @@ Public Class Access
     Public Overrides Sub Open()
         Dim folderPath As String = Path.Combine(_path, GetFolderBase(_dataType))
         Try
-            _connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & IO.Path.Combine(folderPath, _fileName) & ";"
+            _connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & IO.Path.Combine(folderPath, _fileName) & ";"
             _con = New OleDbConnection(_connectionString)
             _con.Open()
             _cmd = New OleDbCommand()
             _isConnected = True
         Catch ex As Exception
             _isConnected = False
-            MsgBox(ex.Message)
-        Finally
-            If _con.State = ConnectionState.Open Then
-                _con.Close()
-            End If
+
         End Try
     End Sub
 

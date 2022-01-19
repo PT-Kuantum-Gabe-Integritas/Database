@@ -25,8 +25,8 @@ Public Class Databasemain
             value = _fn
         End Set
     End Property
-    Public Property UID As String Implements IDatabase.UID
 
+    Public Property UID As String Implements IDatabase.UID
 
     Enum DATATYPE
         CONFIG
@@ -49,7 +49,6 @@ Public Class Databasemain
     Public Function GetFolderBase(type As String) As String
         Return type
     End Function
-
 
     Public ReadOnly Property isConnected As String Implements IDatabase.isConnected
         Get

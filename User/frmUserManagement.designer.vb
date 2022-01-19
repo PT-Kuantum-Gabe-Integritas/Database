@@ -80,7 +80,7 @@ Partial Class frmUserManagement
         'DataGridViewTable
         '
         Me.DataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewTable.Location = New System.Drawing.Point(9, 19)
+        Me.DataGridViewTable.Location = New System.Drawing.Point(9, 18)
         Me.DataGridViewTable.Name = "DataGridViewTable"
         Me.DataGridViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewTable.Size = New System.Drawing.Size(432, 333)
@@ -183,9 +183,9 @@ Partial Class frmUserManagement
         '
         Me.lb_info.Font = New System.Drawing.Font("Nirmala UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_info.ForeColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(108, Byte), Integer))
-        Me.lb_info.Location = New System.Drawing.Point(447, 79)
+        Me.lb_info.Location = New System.Drawing.Point(447, 83)
         Me.lb_info.Name = "lb_info"
-        Me.lb_info.Size = New System.Drawing.Size(194, 36)
+        Me.lb_info.Size = New System.Drawing.Size(194, 32)
         Me.lb_info.TabIndex = 47
         Me.lb_info.Text = "Select Role"
         Me.lb_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

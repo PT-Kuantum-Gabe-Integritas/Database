@@ -116,8 +116,8 @@ Public Class UserManagement
         _dbUser.DBDelete("tb_user", str_where)
     End Sub
 
-    Public Sub UpdateUser(user As String, pass As String) Implements IUserManagement.UpdateUser
-        Dim str_where As String = String.Format("user = '{0}'", user)
+    Public Sub UpdateUser(id As String, pass As String) Implements IUserManagement.UpdateUser
+        Dim str_where As String = String.Format("id = '{0}'", id)
         Dim str_val As String = String.Format("pass = '{0}'", pass)
         _dbUser.DBUpdate("tb_user", str_val, str_where)
     End Sub

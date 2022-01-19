@@ -22,7 +22,7 @@ Public Class TestForm
 
             Try
 
-                SQL.DBLoad(tb_tablename.Text, TableDB, SQL._con)
+                'SQL.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()
@@ -34,7 +34,7 @@ Public Class TestForm
 
             Try
 
-                ACC.DBLoad(tb_tablename.Text, TableDB, ACC._con)
+                'ACC.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()

@@ -39,7 +39,7 @@ Public Class debugForm
         Dim TableDB As New DataTable
         If type = "-SQLite" Then
             Try
-                SQL.DBLoad(tb_tablename.Text, TableDB, SQL._con)
+                'SQL.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()
@@ -49,7 +49,7 @@ Public Class debugForm
             End Try
         ElseIf type = "-Access" Then
             Try
-                ACC.DBLoad(tb_tablename.Text, TableDB, ACC._con)
+                'ACC.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()

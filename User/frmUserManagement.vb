@@ -21,39 +21,11 @@ Public Class frmUserManagement
         Me.Close()
     End Sub
 
-    Private Sub btn_update_Click(sender As Object, e As EventArgs) 
-        If cb_user.Text Is "" Then
-            lb_info.Text = "Select User"
-        Else
-            If tb_input.Text = tb_confirm.Text Then
-                _userManager.UpdateUser(cb_user.Text, tb_input.Text)
-            Else
-                lb_info.Text = "Password is not the same"
-            End If
-        End If
-        '_userManager.GetPermit(cb_user.Text)
-        loadtb()
-    End Sub
-
     Private Sub TestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         _userManager.Initialize()
         tb_confirm.Enabled = False
         tb_input.Enabled = False
         loadtb()
-    End Sub
-
-    Private Sub btn_add_Click(sender As Object, e As EventArgs) 
-        If cb_user.Text Is "" Or cb_user.SelectedIndex = 0 Then
-            lb_info.Text = "Select User"
-        Else
-            If tb_input.Text = tb_confirm.Text Then
-                _userManager.AddUser(cb_user.Text, tb_input.Text)
-                loadtb()
-            Else
-                lb_info.Text = "Password is not the same"
-            End If
-        End If
-
     End Sub
 
     Private Sub loadtb()
@@ -110,7 +82,7 @@ Public Class frmUserManagement
             For Each row As DataGridViewRow In DataGridViewTable.SelectedRows
                 If tb_input.Text = tb_confirm.Text Then
 
-                    _userManager.UpdateUser(cb_user.Text, tb_input.Text)
+                    _userManager.UpdateUser(tb_id.Text, tb_input.Text)
                 Else
                     lb_info.Text = "Password is not the same"
                 End If
