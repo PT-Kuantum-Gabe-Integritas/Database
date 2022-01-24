@@ -39,7 +39,7 @@ Public Class debugForm
         Dim TableDB As New DataTable
         If type = "-SQLite" Then
             Try
-                'SQL.DBLoad(tb_tablename.Text, TableDB)
+                TableDB = SQL.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()
@@ -49,7 +49,7 @@ Public Class debugForm
             End Try
         ElseIf type = "-Access" Then
             Try
-                'ACC.DBLoad(tb_tablename.Text, TableDB)
+                TableDB = ACC.DBLoad(tb_tablename.Text, TableDB)
                 DataGridViewTable.DataSource = Nothing
                 DataGridViewTable.DataSource = TableDB
                 DataGridViewTable.ClearSelection()
@@ -144,13 +144,22 @@ Public Class debugForm
     Private Sub btn_close_Click(sender As Object, e As EventArgs) Handles btn_close.Click
         If cb_list.SelectedIndex = -1 Then
             tb_info.Text = ("select uid")
+        ElseIf cb_list.Text = "all" Then
+            Try
+                testDatabase.CloseDataBase()
+                tb_info.Text = ("data base closed")
+            Catch ex As Exception
+                tb_info.Text = ex.Message
+            End Try
+        Else
+            Try
+                testDatabase.CloseDataBase(cb_list.Text)
+                tb_info.Text = ("data base closed")
+            Catch ex As Exception
+                tb_info.Text = ex.Message
+            End Try
+
         End If
-        Try
-            testDatabase.CloseDataBase(cb_list.Text)
-            tb_info.Text = ("data base closed")
-        Catch ex As Exception
-            tb_info.Text = ex.Message
-        End Try
         loadCon(cb_type.Text)
     End Sub
 

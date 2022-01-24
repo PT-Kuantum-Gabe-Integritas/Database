@@ -360,6 +360,7 @@ Partial Class debugForm
         'cb_list
         '
         Me.cb_list.FormattingEnabled = True
+        Me.cb_list.Items.AddRange(New Object() {"all"})
         Me.cb_list.Location = New System.Drawing.Point(624, 100)
         Me.cb_list.Name = "cb_list"
         Me.cb_list.Size = New System.Drawing.Size(156, 21)

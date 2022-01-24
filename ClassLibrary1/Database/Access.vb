@@ -66,6 +66,10 @@ Public Class Access
 
         End If
 
-        Return MyBase.ExecQuery(cmd)
+        Return dt 'MyBase.ExecQuery(cmd)
+    End Function
+    Public Overrides Function DBLoad(table As String, tbl As DataTable) As DataTable
+        tbl = DBSelect("*", table, "", False, 1)
+        Return tbl
     End Function
 End Class

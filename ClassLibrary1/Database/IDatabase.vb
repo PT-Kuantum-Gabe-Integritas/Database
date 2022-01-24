@@ -3,6 +3,7 @@
     Sub DBInsert(table As String, param As String, values As String)
     Sub DBUpdate(table As String, param As String, where As String)
     Sub DBDelete(table As String, where As String)
+    Function DBLoad(table As String, ByVal tbl As DataTable) As DataTable
     Function GetDate(_date As Date) As String
     Sub FolderExist(path As String)
     ReadOnly Property isConnected As String

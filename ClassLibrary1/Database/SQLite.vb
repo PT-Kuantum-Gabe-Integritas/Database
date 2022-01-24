@@ -75,4 +75,8 @@ Public Class SQLite
         MyBase.Close()
     End Sub
 
+    Public Overrides Function DBLoad(table As String, tbl As DataTable) As DataTable
+        tbl = DBSelect("*", table, "", False, 1)
+        Return tbl
+    End Function
 End Class

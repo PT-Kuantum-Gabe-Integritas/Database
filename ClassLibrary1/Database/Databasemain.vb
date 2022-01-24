@@ -87,11 +87,11 @@ Public Class Databasemain
         End If
     End Sub
 
-    Public Function DBSelect(param As String, table As String, where As String, sortbyASC As Boolean, limit As Integer) As DataTable Implements IDatabase.DBSelect
+    Public Function DBSelect(param As String, table As String,  where As String, sortbyASC As Boolean, limit As Integer) As DataTable Implements IDatabase.DBSelect
         Dim query As String = ""
         Dim dt As DataTable
         If _isConnected Then
-            If where = String.Empty Then
+            If where = "" Then
                 query = String.Format("SELECT {0} FROM {1}",
                                             param, table)
             Else
@@ -103,13 +103,8 @@ Public Class Databasemain
         dt = ExecQuery(query)
         Return dt
     End Function
-    Public Function DBLoad(table As String, ByVal tbl As DataTable, ByVal cn As SQLiteConnection)
-        Dim query As String = ""
-        query = String.Format("SELECT * FROM {0}", table)
-        Dim SQLiteDA As New SQLiteDataAdapter(query, cn)
-        SQLiteDA.Fill(tbl)
-        SQLiteDA.Dispose()
-        SQLiteDA = Nothing
+    Public Overridable Function DBLoad(table As String, ByVal tbl As DataTable) As DataTable Implements IDatabase.DBLoad
+        Return tbl
     End Function
     Public Function GetDate(_date As Date) As String Implements IDatabase.GetDate
         Return String.Format("{0:0000}-{1:00}-{2:00}", _date.Year, _date.Month, _date.Day)

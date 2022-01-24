@@ -129,7 +129,7 @@ Public Class UserManagement
     Public Function loadTable() Implements IUserManagement.loadTable
         Dim TableDB As New DataTable
         Try
-            _dbUser.DBLoad("tb_user", TableDB, _dbUser._con)
+            TableDB = _dbUser.DBLoad("tb_user", TableDB)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
